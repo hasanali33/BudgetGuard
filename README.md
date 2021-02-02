@@ -15,3 +15,14 @@ because, I usually forget to track my purchases. In other words, it would be nic
 to keep track of my latest purchases and see what my activity has been like. 
 I tend to travel a lot, and forget how much I may have spent or what I spent it 
 on days later. This application would be a great solution to that problem.
+
+
+User Stories: 
+
+In the context of a budget application:
+
+As a user, I want to be able to add a purchase to a list
+As a user, I want to be able to view purchases by date
+As a user, I want to be able to delete a purchase 
+As a user, I want to be able to show all purchases
+As a user, I want to be able to view purchases by price
