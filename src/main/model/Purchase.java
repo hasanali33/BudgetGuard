@@ -22,7 +22,7 @@ public class Purchase {
     }
 
 
-
+ 
     public String getName() {
         return this.name;
     }
