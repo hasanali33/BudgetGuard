@@ -33,7 +33,7 @@ public class PurchaseManager {
         ArrayList<Purchase> filtered = new ArrayList<>();
 
         for (int i = 0; i < listofPurchases.size(); i++) {
-            if (listofPurchases.get(i).getDate() == date) {
+            if (listofPurchases.get(i).getDate().equals(date)) {
                 filtered.add(listofPurchases.get(i));
             }
         }
@@ -48,10 +48,12 @@ public class PurchaseManager {
         }
     }
 
+
+    // EFFECTS: prints all the purchases with the specificed index next to them
     public void showAllPurchasesWithIndex() {
         int i = 0;
         for (Purchase p : listofPurchases) {
-            System.out.println(i + p.toString());
+            System.out.println(i + " " + p.toString());
             i++;
         }
     }
@@ -72,15 +74,19 @@ public class PurchaseManager {
 
     }
 
+    // EFFECTS: returns the listofpurchases arraylist
     public ArrayList<Purchase> getListOfPurchases() {
         return listofPurchases;
 
     }
 
+    // EFFECTS: returns listofdates arraylist that contains dates of purchases
     public ArrayList<String> getListOfDates() {
         ArrayList<String> listOfDates = new ArrayList<>();
         for (int i = 0; i < listofPurchases.size(); i++) {
-            listOfDates.add(listofPurchases.get(i).getDate());
+            if (!listOfDates.contains(listofPurchases.get(i).getDate())) {
+                listOfDates.add(listofPurchases.get(i).getDate());
+            }
         }
         return listOfDates;
     }
