@@ -41,28 +41,10 @@ public class PurchaseManager {
 
     }
 
-    // EFFECTS: prints out all the purchases that have been made
-    public void showAllPurchases() {
-        for (Purchase p : listofPurchases) {
-            System.out.println(p.toString());
-        }
-    }
-
-
-    // EFFECTS: prints all the purchases with the specificed index next to them
-    public void showAllPurchasesWithIndex() {
-        int i = 0;
-        for (Purchase p : listofPurchases) {
-            System.out.println(i + " " + p.toString());
-            i++;
-        }
-    }
-
-
-
     // EFFECTS: creates a list with purchases from high to low
     public ArrayList<Purchase> showPurchasesByPrice() {
         ArrayList<Purchase> sortedList = new ArrayList<>();
+        //listofPurchases.sort();
 
         // how to compare from high to low? enchanced for loop?
       //  Purchase holder;

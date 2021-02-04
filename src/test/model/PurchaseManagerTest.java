@@ -85,6 +85,7 @@ class PurchaseManagerTest {
 
     }
 
+
     @Test
     public void testDeleteMultiplePurchases() {
         Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
@@ -134,28 +135,32 @@ class PurchaseManagerTest {
 
         ArrayList<Purchase> unsortedList = testManager.getListOfPurchases();
 
-        // want to return new list so should it be void? but i know cant return with void
 
-        //testManager.showPurchasesByPrice();
+        assertEquals("July 11: (Food) Taco Bell $3", testManager.showPurchasesByPrice().get(3).toString());
+        assertEquals("July 20: (Travel) Food Ticket $20", testManager.showPurchasesByPrice().get(2).toString());
+        assertEquals("July 15: (Travel) Airplane Ticket $350", testManager.showPurchasesByPrice().get(1).toString());
+        assertEquals("July 11: (Rent) Apartment Rent $500", testManager.showPurchasesByPrice().get(0).toString());
 
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    @Test
+    public void testGetListOfDates() {
+        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        Purchase testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
+        Purchase testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+        Purchase testPurchaseFour = new Purchase("July 20", "Travel", "Food Ticket", 20);
 
 
+        testManager.addPurchase(testPurchase);
+        testManager.addPurchase(testPurchaseTwo);
+        testManager.addPurchase(testPurchaseThree);
+        testManager.addPurchase(testPurchaseFour);
 
+        ArrayList<String> dates = testManager.getListOfDates();
 
-
-
+        assertEquals("July 11", dates.get(0));
+        assertEquals("July 15", dates.get(1));
+        assertEquals("July 20", dates.get(2));
 
 
     }

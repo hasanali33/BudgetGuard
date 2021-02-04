@@ -21,8 +21,6 @@ public class Purchase {
         return this.getDate() + ": (" + this.getType() + ") " + this.getName() + " $" + this.getPrice();
     }
 
-
- 
     public String getName() {
         return this.name;
     }
