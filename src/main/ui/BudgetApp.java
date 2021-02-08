@@ -3,7 +3,9 @@ package ui;
 import model.Purchase;
 import model.PurchaseManager;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BudgetApp {
@@ -20,17 +22,18 @@ public class BudgetApp {
     // EFFECTS: processes the input given from the user
     private void runBudgetApp() {
         boolean proceedFoward = true;
-        String userInput;
+        int userInput;
 
         initate();
 
 
         while (proceedFoward) {
             displayUserMenu();
-            userInput = input.nextLine();
-            userInput = userInput.toLowerCase();
 
-            if (userInput.equals("quit")) {
+            userInput = input.nextInt();
+            input.nextLine();
+
+            if (userInput == 4) {
                 proceedFoward = false;
             } else {
                 processUserInput(userInput);
@@ -42,12 +45,12 @@ public class BudgetApp {
 
     // MODIFIES: this
     // EFFECTS: processes user input
-    private void processUserInput(String userInput) {
-        if (userInput.equals("view purchases")) {
+    private void processUserInput(int userInput) {
+        if (userInput == 1) {
             viewWhichPurchase();
-        } else if (userInput.equals("add purchase")) {
+        } else if (userInput == 2) {
             addPurchase();
-        } else if (userInput.equals("delete purchase")) {
+        } else if (userInput == 3) {
             deletePurchase();
         } else {
             System.out.println("Input invalid, please try again");
@@ -58,31 +61,31 @@ public class BudgetApp {
     // EFFECTS: displays full menu of options to user
     private void displayUserMenu() {
         System.out.println("What would you like to do today?:");
-        System.out.println("- View Purchases");
-        System.out.println("- Add Purchase");
-        System.out.println("- Delete Purchase");
-        System.out.println("- Quit");
+        System.out.println("1) View Purchases");
+        System.out.println("2) Add Purchase");
+        System.out.println("3) Delete Purchase");
+        System.out.println("4) Quit");
     }
 
     // MODIFES: this
     // EFFECTS: Allows the user to choose which way to view purchases, by date or price or all of them
     private void viewWhichPurchase() {
-        String selection = "";
+        int selection = 0;
 
         System.out.println("Which way would you like to view your purchases?");
-        while (!selection.equals("bd") && !selection.equals("bp") && !selection.equals("all")) {
-            System.out.println("bd for by date");
-            System.out.println("bp for by price");
-            System.out.println("all for show all purchases");
-            selection = input.nextLine();
-            selection = selection.toLowerCase();
+        while (selection != 1 && selection != 2 && selection != 3) {
+            System.out.println("1) bd for by date");
+            System.out.println("2) bp for by price");
+            System.out.println("3) all for show all purchases");
+            selection = input.nextInt();
+            input.nextLine();
         }
 
-        if (selection.equals("bd")) {
+        if (selection == 1) {
             viewPurchasesByDate();
-        } else if (selection.equals("bp")) {
+        } else if (selection == 2) {
             viewPurchasesByPrice();
-        } else if (selection.equals("all")) {
+        } else if (selection == 3) {
             viewAllPurchases();
         } else {
             System.out.println("Invalid input, please try again");
@@ -137,6 +140,24 @@ public class BudgetApp {
     // EFFECTS: adds purchase to the list
     private void addPurchase() {
         String userInputAnotherItem = "";
+        //System.out.println("Would you like to add to a new budget or an existing budget?");
+        //String inputFromUser = input.nextLine();
+
+
+
+        // when user gets into app, create a new purchase manager and user id
+
+
+        // add to new budget
+        // create new list
+        // add name
+        // then add purchases
+
+        // otherwise add to an existing budget
+        // list budgets
+        // choose budget to add
+        // add purchase
+
         System.out.println("Please enter the date you made the purchase (ex: July 11)");
         String date = input.nextLine();
         System.out.println("Please enter the type of purchase you made (ex: Food)");

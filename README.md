@@ -8,13 +8,13 @@ Use *this* app to help:
 
 The application I plan to create is a **budget application**. The application
 helps users keep track of their purchases, shows them their past
-purchases and how much money they have spent. This application can be used by amy user
- who wants to keep monitor their latest purchases, as well as have a record of them.
-track of their latest purchases, as well as monitoring. This project is of interest to me
-because, I usually forget to track my purchases. In other words, it would be nice
-to keep track of my latest purchases and see what my activity has been like. 
-I tend to travel a lot, and forget how much I may have spent or what I spent it 
-on days later. This application would be a great solution to that problem.
+purchases and how much money they have spent. This application can be used by any user
+who wants to monitor their latest purchases, as well as have a record of them.
+This project is of interest to me because, I usually forget to track my purchases. I usually 
+try to remember my past purchases, but always forget. It would be nice
+to keep track of my latest purchases and see what my activity has been like so I know
+how much I am spending, as well as what I am spending it on. I tend to travel a lot, and forget how much 
+I may have spent or what I spent it on days later. This application would be a great solution to that problem.
 
 
 User Stories: 
@@ -25,4 +25,5 @@ In the context of a budget application:
 - As a user, I want to be able to view purchases by date
 - As a user, I want to be able to delete a purchase 
 - As a user, I want to be able to show all purchases
+- As a user, I want to be able to see total money spent
 - As a user, I want to be able to view purchases by price
