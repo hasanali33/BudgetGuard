@@ -185,4 +185,28 @@ class PurchaseManagerTest {
 
     }
 
+
+    @Test
+    public void testGetListOfTypes() {
+        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        Purchase testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
+        Purchase testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+        Purchase testPurchaseFour = new Purchase("July 20", "Travel", "Food Ticket", 20);
+
+
+        testManager.addPurchase(testPurchase);
+        testManager.addPurchase(testPurchaseTwo);
+        testManager.addPurchase(testPurchaseThree);
+        testManager.addPurchase(testPurchaseFour);
+
+        ArrayList<String> types = testManager.getListOfTypes();
+
+        assertEquals("Food", types.get(0));
+        assertEquals("Rent", types.get(1));
+        assertEquals("Travel", types.get(2));
+
+
+    }
+
+
 }

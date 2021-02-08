@@ -47,7 +47,11 @@ public class BudgetApp {
     // EFFECTS: processes user input
     private void processUserInput(int userInput) {
         if (userInput == 1) {
-            viewWhichPurchase();
+            if (aliH.getListOfPurchases().size() == 0) {
+                System.out.println("There are no purchases to show!");
+            } else {
+                viewWhichPurchase();
+            }
         } else if (userInput == 2) {
             addPurchase();
         } else if (userInput == 3) {
@@ -115,7 +119,6 @@ public class BudgetApp {
             total += dateSorted.get(i).getPrice();
         }
         System.out.println("Total spent: $" + total);
-
     }
 
     // EFFECTS: prints back a list of all the purchases in the list
@@ -154,7 +157,6 @@ public class BudgetApp {
             total += typeSorted.get(i).getPrice();
         }
         System.out.println("Total spent: $" + total);
-
     }
 
     // EFFECTS: adds purchase to the list
@@ -163,9 +165,7 @@ public class BudgetApp {
         //System.out.println("Would you like to add to a new budget or an existing budget?");
         //String inputFromUser = input.nextLine();
 
-
-
-        // when user gets into app, create a new purchase manager and user id
+        // when user gets into app, create a new purchase manager and user id?
 
 
         // add to new budget
