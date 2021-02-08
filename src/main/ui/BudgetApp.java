@@ -74,9 +74,9 @@ public class BudgetApp {
 
         System.out.println("Which way would you like to view your purchases?");
         while (selection != 1 && selection != 2 && selection != 3) {
-            System.out.println("1) bd for by date");
-            System.out.println("2) bp for by price");
-            System.out.println("3) all for show all purchases");
+            System.out.println("1) by date");
+            System.out.println("2) by type");
+            System.out.println("3) show all purchases");
             selection = input.nextInt();
             input.nextLine();
         }
@@ -84,7 +84,7 @@ public class BudgetApp {
         if (selection == 1) {
             viewPurchasesByDate();
         } else if (selection == 2) {
-            viewPurchasesByPrice();
+            viewPurchasesByType();
         } else if (selection == 3) {
             viewAllPurchases();
         } else {
@@ -93,6 +93,7 @@ public class BudgetApp {
 
     }
 
+    // EFFECTS: prints a list of purchases made on the date given by the user and the total spent
     public void viewPurchasesByDate() {
         System.out.println("Please enter the date you would like to see from the following list: ");
 
@@ -131,11 +132,30 @@ public class BudgetApp {
         //aliH.addPurchase(new Purchase("july 15", "food", "taco bell", 20));
     }
 
-    // how?
-    private void viewPurchasesByPrice() {
-        showAllPurchases();
-    }
+    // EFFECTS: prints a list of purchases of that type given by the user and the total spent
+    private void viewPurchasesByType() {
+        System.out.println("Please enter the following type of purchase you would like to view");
 
+        for (int i = 0; i < aliH.getListOfTypes().size(); i++) {
+            System.out.println(aliH.getListOfTypes().get(i));
+        }
+
+        // if print line before nextline, add another nextline
+        // does not stop and ask user what date to specify
+        String type = input.nextLine();
+        type = type.toLowerCase();
+
+
+        ArrayList<Purchase> typeSorted = aliH.viewPurchasesByType(type);
+
+        int total = 0;
+        for (int i = 0; i < typeSorted.size(); i++) {
+            System.out.println(typeSorted.get(i).toString());
+            total += typeSorted.get(i).getPrice();
+        }
+        System.out.println("Total spent: $" + total);
+
+    }
 
     // EFFECTS: adds purchase to the list
     private void addPurchase() {

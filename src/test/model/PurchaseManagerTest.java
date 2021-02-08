@@ -72,6 +72,26 @@ class PurchaseManagerTest {
     }
 
     @Test
+    public void testViewPurchasesByType() {
+        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        Purchase testPurchaseTwo = new Purchase("July 12", "Rent", "Apartment Rent", 500);
+        Purchase testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+        Purchase testPurchaseFour = new Purchase("July 16", "Food", "Culvers", 30);
+
+        testManager.addPurchase(testPurchase); // 0
+        testManager.addPurchase(testPurchaseTwo); // 1
+        testManager.addPurchase(testPurchaseThree); // 2
+        testManager.addPurchase(testPurchaseFour); // 3
+
+        ArrayList<Purchase> sortedList = testManager.viewPurchasesByType("Food");
+
+        assertEquals(2, sortedList.size());
+
+        assertEquals("July 11: (Food) Taco Bell $3", sortedList.get(0).toString());
+        assertEquals("July 16: (Food) Culvers $30", sortedList.get(1).toString());
+    }
+
+    @Test
     public void testDeletePurchase() {
         Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
         testManager.addPurchase(testPurchase);
@@ -117,31 +137,31 @@ class PurchaseManagerTest {
         assertEquals("July 20: (Travel) Food Ticket $20", testManager.getListOfPurchases().get(1).toString());
     }
 
-    @Test
-    public void testViewPurchaseByPrice() {
-
-        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
-        Purchase testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
-        Purchase testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
-        Purchase testPurchaseFour = new Purchase("July 20", "Travel", "Food Ticket", 20);
-
-
-        testManager.addPurchase(testPurchase);
-        testManager.addPurchase(testPurchaseTwo);
-        testManager.addPurchase(testPurchaseThree);
-        testManager.addPurchase(testPurchaseFour);
-
-        assertEquals(4, testManager.getListOfPurchases().size());
-
-        ArrayList<Purchase> unsortedList = testManager.getListOfPurchases();
-
-
-        assertEquals("July 11: (Food) Taco Bell $3", testManager.showPurchasesByPrice().get(3).toString());
-        assertEquals("July 20: (Travel) Food Ticket $20", testManager.showPurchasesByPrice().get(2).toString());
-        assertEquals("July 15: (Travel) Airplane Ticket $350", testManager.showPurchasesByPrice().get(1).toString());
-        assertEquals("July 11: (Rent) Apartment Rent $500", testManager.showPurchasesByPrice().get(0).toString());
-
-    }
+//    @Test
+//    public void testViewPurchaseByPrice() {
+//
+//        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+//        Purchase testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
+//        Purchase testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+//        Purchase testPurchaseFour = new Purchase("July 20", "Travel", "Food Ticket", 20);
+//
+//
+//        testManager.addPurchase(testPurchase);
+//        testManager.addPurchase(testPurchaseTwo);
+//        testManager.addPurchase(testPurchaseThree);
+//        testManager.addPurchase(testPurchaseFour);
+//
+//        assertEquals(4, testManager.getListOfPurchases().size());
+//
+//        ArrayList<Purchase> unsortedList = testManager.getListOfPurchases();
+//
+//
+//        assertEquals("July 11: (Food) Taco Bell $3", testManager.showPurchasesByPrice().get(3).toString());
+//        assertEquals("July 20: (Travel) Food Ticket $20", testManager.showPurchasesByPrice().get(2).toString());
+//        assertEquals("July 15: (Travel) Airplane Ticket $350", testManager.showPurchasesByPrice().get(1).toString());
+//        assertEquals("July 11: (Rent) Apartment Rent $500", testManager.showPurchasesByPrice().get(0).toString());
+//
+//    }
 
     @Test
     public void testGetListOfDates() {
@@ -164,10 +184,5 @@ class PurchaseManagerTest {
 
 
     }
-
-
-
-
-
 
 }
