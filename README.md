@@ -22,8 +22,8 @@ User Stories:
 In the context of a budget application:
 
 - As a user, I want to be able to add a purchase to a list
-- As a user, I want to be able to view purchases by date
 - As a user, I want to be able to delete a purchase 
+- As a user, I want to be able to view purchases by date
+- As a user, I want to be able to view purchases by type
 - As a user, I want to be able to show all purchases
 - As a user, I want to be able to see total money spent
-- As a user, I want to be able to view purchases by price
