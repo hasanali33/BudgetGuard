@@ -41,7 +41,6 @@ public class PurchaseManager {
 
     }
 
-    // need to test
     // EFFECTS: implements a new ArrayList with the purchases that equal the type the user input
     public ArrayList<Purchase> viewPurchasesByType(String type) {
         ArrayList<Purchase> filtered = new ArrayList<>();
