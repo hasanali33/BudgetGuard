@@ -79,7 +79,7 @@ public class BudgetApp {
     }
 
 
-    // EFFECTS:
+    // EFFECTS: asks the user if to add to new budget or existing, and passes the input to another method
     public void addToNewBudgetOrExisting() {
         String userInput = "";
         System.out.println("Select 1) create and add to a new budget or 2) add to an existing budget");
@@ -107,7 +107,7 @@ public class BudgetApp {
     }
 
 
-    // EFFECTS:
+    // EFFECTS: Creates new budget and adds to list of Budgets in the budgetmanager, then passes it into add purchase
     public void createNewBudget() {
         String userInput = "";
         System.out.println("What would you like to name the budget?");
