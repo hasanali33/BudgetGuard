@@ -15,10 +15,10 @@ public class Budget {
         purchaseManager = new PurchaseManager();
     }
 
-    // EFFECTS: creates new Budget object
-    public void initiateNewBudget(String name) {
-        new Budget(name);
-    }
+//    // EFFECTS: creates new Budget object
+//    public void initiateNewBudget(String name) {
+//        new Budget(name);
+//    }
 
     // EFFECTS: adds the purchase manager to the listOfPurchaseManagers list
    // public void addToBudgetList(PurchaseManager p) {

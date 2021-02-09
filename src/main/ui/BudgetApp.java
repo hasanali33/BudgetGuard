@@ -142,7 +142,6 @@ public class BudgetApp {
     // EFFECTS: takes the users input of what budget they would like to view
     private void viewWhichBudget() {
         String userInput = "";
-        int selection = 0;
 
         System.out.println("Which budget would you like to view?");
         viewAllBudgets();
@@ -288,7 +287,7 @@ public class BudgetApp {
     public void showAllPurchases(PurchaseManager p) {
         int total = 0;
         for (Purchase purchase : p.getListOfPurchases()) {
-            System.out.println(p.toString());
+            System.out.println(purchase.toString());
             total += purchase.getPrice();
         }
         System.out.println("Total spent: $" + total);
