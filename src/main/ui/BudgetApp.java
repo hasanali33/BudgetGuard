@@ -3,7 +3,7 @@ package ui;
 import model.Budget;
 import model.BudgetManager;
 import model.Purchase;
-import model.PurchaseManager;
+//import model.PurchaseManager;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -55,7 +55,7 @@ public class BudgetApp {
             if (budgetManager.getListOfBudgets().size() == 0) {
                 System.out.println("There are no budgets to delete from!");
             } else {
-                deleteWhichBudgetPurchase();
+                deleteFromWhichBudget();
             }
         } else {
             System.out.println("Input invalid, please try again");
@@ -64,7 +64,7 @@ public class BudgetApp {
     }
 
     // EFFECTS: asks the user's which budget to delete from and passes it into an another method
-    public void deleteWhichBudgetPurchase() {
+    public void deleteFromWhichBudget() {
         String userInput = "";
         System.out.println("Which budget would you like to delete from?");
 
@@ -74,7 +74,7 @@ public class BudgetApp {
 
         Budget specifiedBudget = budgetManager.viewBudgetsByName(userInput);
 
-        deletePurchase(specifiedBudget.getPurchaseManager());
+        deletePurchase(specifiedBudget);
 
     }
 
@@ -100,7 +100,7 @@ public class BudgetApp {
 
                 Budget specifiedBudget = budgetManager.viewBudgetsByName(userInput);
 
-                addPurchase(specifiedBudget.getPurchaseManager());
+                addPurchase(specifiedBudget);
             }
 
         }
@@ -118,7 +118,7 @@ public class BudgetApp {
 
         budgetManager.getListOfBudgets().add(budget);
 
-        addPurchase(budget.getPurchaseManager());
+        addPurchase(budget);
 
     }
 
@@ -150,13 +150,13 @@ public class BudgetApp {
 
         Budget specifiedBudget = budgetManager.viewBudgetsByName(userInput);
 
-        viewWhichPurchase(specifiedBudget.getPurchaseManager());
+        viewWhichPurchase(specifiedBudget);
 
     }
 
     // MODIFIES: this
     // EFFECTS: Allows the user to choose which way to view purchases, by date or price or all of them
-    private void viewWhichPurchase(PurchaseManager p) {
+    private void viewWhichPurchase(Budget p) {
         int selection = 0;
 
         System.out.println("Which way would you like to view your purchases?");
@@ -181,7 +181,7 @@ public class BudgetApp {
     }
 
     // EFFECTS: prints a list of purchases made on the date given by the user and the total spent
-    public void viewPurchasesByDate(PurchaseManager p) {
+    public void viewPurchasesByDate(Budget p) {
         System.out.println("Please enter the date you would like to see from the following list: ");
 
         for (int i = 0; i < p.getListOfDates().size(); i++) {
@@ -205,7 +205,7 @@ public class BudgetApp {
     }
 
     // EFFECTS: prints back a list of all the purchases in the list
-    private void viewAllPurchases(PurchaseManager p) {
+    private void viewAllPurchases(Budget p) {
         showAllPurchases(p);
     }
 
@@ -218,7 +218,7 @@ public class BudgetApp {
     }
 
     // EFFECTS: prints a list of purchases of that type given by the user and the total spent
-    private void viewPurchasesByType(PurchaseManager p) {
+    private void viewPurchasesByType(Budget p) {
         System.out.println("Please enter the following type of purchase you would like to view");
 
         for (int i = 0; i < p.getListOfTypes().size(); i++) {
@@ -243,7 +243,7 @@ public class BudgetApp {
 
     // MODIFIES: PurchaseManager p has purchase added tp list
     // EFFECTS: adds purchase to the PurchaseManager list
-    private void addPurchase(PurchaseManager p) {
+    private void addPurchase(Budget p) {
         String userInputAnotherItem = "";
 
         System.out.println("Please enter the date you made the purchase (ex: July 11)");
@@ -275,7 +275,7 @@ public class BudgetApp {
     }
 
     // EFFECTS: prints all the purchases with the specificed index next to them
-    public void showAllPurchasesWithIndex(PurchaseManager p) {
+    public void showAllPurchasesWithIndex(Budget p) {
         int i = 0;
         for (Purchase purchase : p.getListOfPurchases()) {
             System.out.println(i + " " + purchase.toString());
@@ -284,7 +284,7 @@ public class BudgetApp {
     }
 
     // EFFECTS: prints out all the purchases that have been made
-    public void showAllPurchases(PurchaseManager p) {
+    public void showAllPurchases(Budget p) {
         int total = 0;
         for (Purchase purchase : p.getListOfPurchases()) {
             System.out.println(purchase.toString());
@@ -296,7 +296,7 @@ public class BudgetApp {
 
 
     // EFFECTS: deletes the specificed purchase the user wants deleted from the list
-    private void deletePurchase(PurchaseManager p) {
+    private void deletePurchase(Budget p) {
         System.out.println("Please enter the number you would like to delete");
         showAllPurchasesWithIndex(p);
 

@@ -7,36 +7,92 @@ import java.util.List;
 
 public class Budget {
     private String name;
-    private PurchaseManager purchaseManager;
+   // private PurchaseManager purchaseManager;
+    private ArrayList<Purchase> listofPurchases;
 
 
     public Budget(String name) {
         this.name = name;
-        purchaseManager = new PurchaseManager();
+        listofPurchases = new ArrayList<>();
     }
-
-//    // EFFECTS: creates new Budget object
-//    public void initiateNewBudget(String name) {
-//        new Budget(name);
-//    }
-
-    // EFFECTS: adds the purchase manager to the listOfPurchaseManagers list
-   // public void addToBudgetList(PurchaseManager p) {
-    //    purchaseManager.add(p);
-    //}
-
-    // EFFECTS: removes purchasemanager from budget
-   // public void removeBudgetList(PurchaseManager p) {
-    //    listOfPurchaseManagers.remove(p);
-    //}
 
     public String getName() {
         return this.name;
     }
 
-    public PurchaseManager getPurchaseManager() {
-        return purchaseManager;
+
+    // EFFECTS: adds a purchase to the listofpurchases list
+    public void addPurchase(Purchase purchase) {
+        listofPurchases.add(purchase);
+
     }
+
+    // EFFECTS: removes a purchase from the listofpurchases list
+    public void removePurchase(Purchase purchase) {
+        for (int i = 0; i < listofPurchases.size(); i++) {
+            // right way to set equal?
+            if (listofPurchases.get(i) == purchase) {
+                listofPurchases.remove(i);
+            }
+        }
+    }
+
+    // EFFECTS: implements a new ArrayList with the purchases that were made at that date
+    public ArrayList<Purchase> viewPurchasesByDate(String date) {
+        ArrayList<Purchase> filtered = new ArrayList<>();
+
+        for (int i = 0; i < listofPurchases.size(); i++) {
+            if (listofPurchases.get(i).getDate().equals(date)) {
+                filtered.add(listofPurchases.get(i));
+            }
+        }
+        return filtered;
+
+    }
+
+    // EFFECTS: implements a new ArrayList with the purchases that equal the type the user input
+    public ArrayList<Purchase> viewPurchasesByType(String type) {
+        ArrayList<Purchase> filtered = new ArrayList<>();
+
+        for (int i = 0; i < listofPurchases.size(); i++) {
+            if (listofPurchases.get(i).getType().equals(type)) {
+                filtered.add(listofPurchases.get(i));
+            }
+        }
+        return filtered;
+
+    }
+
+
+    // EFFECTS: returns the listofpurchases arraylist
+    public ArrayList<Purchase> getListOfPurchases() {
+        return listofPurchases;
+
+    }
+
+    // EFFECTS: returns listofdates arraylist that contains dates of purchases
+    public ArrayList<String> getListOfDates() {
+        ArrayList<String> listOfDates = new ArrayList<>();
+        for (int i = 0; i < listofPurchases.size(); i++) {
+            if (!listOfDates.contains(listofPurchases.get(i).getDate())) {
+                listOfDates.add(listofPurchases.get(i).getDate());
+            }
+        }
+        return listOfDates;
+    }
+
+    // need to test
+    // EFFECTS: returns listoftypes arraylist that contains the types of purchases
+    public ArrayList<String> getListOfTypes() {
+        ArrayList<String> listOfTypes = new ArrayList<>();
+        for (int i = 0; i < listofPurchases.size(); i++) {
+            if (!listOfTypes.contains(listofPurchases.get(i).getType())) {
+                listOfTypes.add(listofPurchases.get(i).getType());
+            }
+        }
+        return listOfTypes;
+    }
+
 
 
 }

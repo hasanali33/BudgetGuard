@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BudgetManager {
     private List<Budget> listOfBudgets;
-    private PurchaseManager purchaseManager;
+    //private PurchaseManager purchaseManager;
 
 
 

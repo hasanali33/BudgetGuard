@@ -27,12 +27,15 @@ public class BudgetManagerTest {
     public void testViewListOfBudgetsName() {
         Budget Tokyo = new Budget("Tokyo");
         Budget London = new Budget("London");
+        Budget LondonTwo = new Budget("London");
         Budget Paris = new Budget("Paris");
 
 
         budgetManagerTest.getListOfBudgets().add(Tokyo);
         budgetManagerTest.getListOfBudgets().add(London);
         budgetManagerTest.getListOfBudgets().add(Paris);
+        budgetManagerTest.getListOfBudgets().add(LondonTwo);
+
 
         List<String> listOfNames = budgetManagerTest.getListOfName();
 
