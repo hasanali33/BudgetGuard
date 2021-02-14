@@ -42,6 +42,7 @@ public class BudgetManagerTest {
         assertEquals("Tokyo", listOfNames.get(0));
         assertEquals("London", listOfNames.get(1));
         assertEquals("Paris", listOfNames.get(2));
+
     }
 
 

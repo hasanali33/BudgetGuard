@@ -17,13 +17,13 @@ how much I am spending, as well as what I am spending it on. I tend to travel a 
 I may have spent or what I spent it on days later. This application would be a great solution to that problem.
 
 
-User Stories: 
+## User Stories: 
 
 In the context of a budget application:
 - As a user, I want to be able to create a new budget
-- As a user, I want to be able to add to an existing budget
-- As a user, I want to be able to add a purchase to a certain budget
+- As a user, I want to be able to add to a budget
 - As a user, I want to be able to show all purchases in a budget
+- As a user, I want to be able to see total money spent in a budget
 
 
 
@@ -32,6 +32,6 @@ Future additions:
 - As a user, I want to be able to delete a purchase in a certain budget
 - As a user, I want to be able to view purchases by date in a budget
 - As a user, I want to be able to view purchases by type in a budget
-- As a user, I want to be able to see total money spent in a budget
 - As a user, I want to be able to delete a budget
 - As a user, I want to be able to show all purchases of all budgets combined
+- As a user, I want to be able to add a purchase to a certain budget

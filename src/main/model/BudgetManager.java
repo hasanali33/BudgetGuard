@@ -32,11 +32,11 @@ public class BudgetManager {
         return listOfBudgets;
     }
 
-    // EFFECTS: returns listoftypes arraylist that contains the types of purchases
+    // EFFECTS: returns listofBudgets names in a arraylist filled with strings that contains the names of budgets
     public List<String> getListOfName() {
         ArrayList<String> listOfNames = new ArrayList<>();
         for (int i = 0; i < listOfBudgets.size(); i++) {
-            if (!listOfBudgets.contains(listOfBudgets.get(i).getName())) {
+            if (!listOfNames.contains(listOfBudgets.get(i).getName())) {
                 listOfNames.add(listOfBudgets.get(i).getName());
             }
         }

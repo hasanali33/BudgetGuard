@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BudgetApp {
+
+    // Source: some UI Code taken from TellerApp
+
     private Scanner input;
     private Scanner inputTwo;
     private BudgetManager budgetManager;
@@ -63,7 +66,7 @@ public class BudgetApp {
 
     }
 
-    // EFFECTS: asks the user's which budget to delete from and passes it into an another method
+    // EFFECTS: asks the user's which budget to delete from and passes it into the deletePurchase method
     public void deleteFromWhichBudget() {
         String userInput = "";
         System.out.println("Which budget would you like to delete from?");
@@ -79,7 +82,7 @@ public class BudgetApp {
     }
 
 
-    // EFFECTS: asks the user if to add to new budget or existing, and passes the input to another method
+    // EFFECTS: asks the user if to add to new budget or existing, and passes the input into another method
     public void addToNewBudgetOrExisting() {
         String userInput = "";
         System.out.println("Select 1) create and add to a new budget or 2) add to an existing budget");
@@ -107,7 +110,7 @@ public class BudgetApp {
     }
 
 
-    // EFFECTS: Creates new budget and adds to list of Budgets in the budgetmanager, then passes it into add purchase
+    // EFFECTS: Creates new budget, adds it to list of Budgets in the budgetmanager, then passes it into add purchase
     public void createNewBudget() {
         String userInput = "";
         System.out.println("What would you like to name the budget?");
@@ -154,7 +157,8 @@ public class BudgetApp {
 
     }
 
-    // MODIFIES: this
+
+
     // EFFECTS: Allows the user to choose which way to view purchases, by date or price or all of them
     private void viewWhichPurchase(Budget p) {
         int selection = 0;
@@ -209,7 +213,7 @@ public class BudgetApp {
         showAllPurchases(p);
     }
 
-    // EFFECTS: initates the system input and the purchasemanager object
+    // EFFECTS: initates the system input and the BudgetManager object
     private void initate() {
         input = new Scanner(System.in);
         inputTwo = new Scanner(System.in);
@@ -241,8 +245,8 @@ public class BudgetApp {
         System.out.println("Total spent: $" + total);
     }
 
-    // MODIFIES: PurchaseManager p has purchase added tp list
-    // EFFECTS: adds purchase to the PurchaseManager list
+    // MODIFIES: Budget p adds purchase to its list
+    // EFFECTS: adds purchase to the Budget list
     private void addPurchase(Budget p) {
         String userInputAnotherItem = "";
 
@@ -295,6 +299,7 @@ public class BudgetApp {
 
 
 
+    // MODIFIES: Budget p, it removes purchase from the list
     // EFFECTS: deletes the specificed purchase the user wants deleted from the list
     private void deletePurchase(Budget p) {
         System.out.println("Please enter the number you would like to delete");
