@@ -1,14 +1,18 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class BudgetManager {
+public class BudgetManager implements Writable {
     private List<Budget> listOfBudgets;
     //private PurchaseManager purchaseManager;
 
 
-
+    // EFFECTS: creates a budgetManger object with a listofbudgets arrayList
     public BudgetManager() {
         listOfBudgets = new ArrayList<>();
     }
@@ -41,5 +45,22 @@ public class BudgetManager {
             }
         }
         return listOfNames;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("budgets", budgetsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns budgets in this budgetmanager as a JSON array
+    private JSONArray budgetsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Budget b : listOfBudgets) {
+            jsonArray.put(b.toJson());
+        }
+        return jsonArray;
     }
 }

@@ -1,16 +1,21 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
 import ui.BudgetApp;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Budget {
+public class Budget implements Writable {
     private String name;
    // private PurchaseManager purchaseManager;
     private ArrayList<Purchase> listofPurchases;
 
 
+
+    // EFFECTS: creates a budget with a specified name and creates an ArrayList for listofpurchases
     public Budget(String name) {
         this.name = name;
         listofPurchases = new ArrayList<>();
@@ -94,5 +99,22 @@ public class Budget {
     }
 
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("purchases", purchasesToJson());
+        return json;
+    }
 
+    // EFFECTS: returns purchases in this listofpurchases as a JSON array
+    private JSONArray purchasesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Purchase p : listofPurchases) {
+            jsonArray.put(p.toJson());
+        }
+
+        return  jsonArray;
+    }
 }

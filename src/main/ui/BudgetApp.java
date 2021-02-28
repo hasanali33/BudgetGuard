@@ -3,17 +3,24 @@ package ui;
 import model.Budget;
 import model.BudgetManager;
 import model.Purchase;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 //import model.PurchaseManager;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BudgetApp {
 
-    // Source: some UI Code taken from TellerApp
+    // Source: some UI Code taken from TellerApp and WorkRoom app
 
     private Scanner input;
     private Scanner inputTwo;
     private BudgetManager budgetManager;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private static final String JSON_STORE = "./data/budgets";
 
     // EFFECTS: runs the Budget application
     public BudgetApp() {
@@ -131,7 +138,9 @@ public class BudgetApp {
         System.out.println("1) View Budgets");
         System.out.println("2) Add Purchase");
         System.out.println("3) Delete Purchase");
-        System.out.println("4) Quit");
+        System.out.println("4) save budgets to file");
+        System.out.println("5) load budgets from file");
+        System.out.println("6) quit");
     }
 
     // EFFECTS: prints the names of all the budgets in the list
@@ -178,6 +187,10 @@ public class BudgetApp {
             viewPurchasesByType(p);
         } else if (selection == 3) {
             viewAllPurchases(p);
+        } else if (selection == 4) {
+            saveBudgets();
+        } else if (selection == 5) {
+            loadBudgets();
         } else {
             System.out.println("Invalid input, please try again");
         }
@@ -219,6 +232,8 @@ public class BudgetApp {
         inputTwo = new Scanner(System.in);
         //aliH = new PurchaseManager();
         budgetManager = new BudgetManager();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // EFFECTS: prints a list of purchases of that type given by the user and the total spent
@@ -313,6 +328,30 @@ public class BudgetApp {
         System.out.println("Purchase has been successfully removed!");
 
 
+    }
+
+
+    // EFFECTS: saves the workroom to file
+    private void saveBudgets() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(budgetManager);
+            jsonWriter.close();
+            System.out.println("Saved budgets" + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadBudgets() {
+        try {
+            budgetManager = jsonReader.read();
+            System.out.println("Loaded budgets" + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 

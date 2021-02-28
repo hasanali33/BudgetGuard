@@ -1,6 +1,9 @@
 package model;
 
-public class Purchase {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Purchase implements Writable {
 
     private String name;
     private String type;
@@ -8,6 +11,7 @@ public class Purchase {
     private int price;
 
 
+    // EFFECTS: creates a purchase object with the date, type, name and price
     public Purchase(String date, String type, String name, int price) {
         this.name = name;
         this.type = type;
@@ -35,5 +39,15 @@ public class Purchase {
 
     public int getPrice() {
         return this.price;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("type", type);
+        json.put("date", date);
+        json.put("price", price);
+        return json;
     }
 }
