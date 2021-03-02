@@ -1,0 +1,34 @@
+{"budgets.json": [
+    {
+        "purchases": [
+            {
+                "date": "june 3",
+                "price": 40,
+                "name": "taco bell",
+                "type": "food"
+            },
+            {
+                "date": "june 9",
+                "price": 20,
+                "name": "culvers",
+                "type": "food"
+            },
+            {
+                "date": "august 3",
+                "price": 900,
+                "name": "airline ticket",
+                "type": "travel"
+            }
+        ],
+        "name": "london"
+    },
+    {
+        "purchases": [{
+            "date": "june 9",
+            "price": 90,
+            "name": "bus ticket",
+            "type": "other"
+        }],
+        "name": "spain"
+    }
+]}

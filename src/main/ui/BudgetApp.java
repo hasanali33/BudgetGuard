@@ -20,7 +20,7 @@ public class BudgetApp {
     private BudgetManager budgetManager;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-    private static final String JSON_STORE = "./data/budgets";
+    private static final String JSON_STORE = "./data/budgets.json";
 
     // EFFECTS: runs the Budget application
     public BudgetApp() {
@@ -40,7 +40,7 @@ public class BudgetApp {
             userInput = input.nextInt();
             input.nextLine();
 
-            if (userInput == 4) {
+            if (userInput == 6) {
                 proceedForward = false;
             } else {
                 processUserInput(userInput);
@@ -67,6 +67,10 @@ public class BudgetApp {
             } else {
                 deleteFromWhichBudget();
             }
+        } else if (userInput == 4) {
+            saveBudgets();
+        } else if (userInput == 5) {
+            loadBudgets();
         } else {
             System.out.println("Input invalid, please try again");
         }
@@ -138,12 +142,12 @@ public class BudgetApp {
         System.out.println("1) View Budgets");
         System.out.println("2) Add Purchase");
         System.out.println("3) Delete Purchase");
-        System.out.println("4) save budgets to file");
-        System.out.println("5) load budgets from file");
-        System.out.println("6) quit");
+        System.out.println("4) Save budgets to file");
+        System.out.println("5) Load budgets from file");
+        System.out.println("6) Quit");
     }
 
-    // EFFECTS: prints the names of all the budgets in the list
+    // EFFECTS: prints the names of all the budgets.json in the list
     private void viewAllBudgets() {
         for (Budget budget : budgetManager.getListOfBudgets()) {
             System.out.println(budget.getName());
@@ -187,10 +191,6 @@ public class BudgetApp {
             viewPurchasesByType(p);
         } else if (selection == 3) {
             viewAllPurchases(p);
-        } else if (selection == 4) {
-            saveBudgets();
-        } else if (selection == 5) {
-            loadBudgets();
         } else {
             System.out.println("Invalid input, please try again");
         }

@@ -17,7 +17,7 @@ public class BudgetManager implements Writable {
         listOfBudgets = new ArrayList<>();
     }
 
-    // EFFECTS: implements a new ArrayList with the budgets that equal the name the user input
+    // EFFECTS: implements a new ArrayList with the budgets.json that equal the name the user input
     public Budget viewBudgetsByName(String name) {
         Budget filtered = null;
 
@@ -36,7 +36,7 @@ public class BudgetManager implements Writable {
         return listOfBudgets;
     }
 
-    // EFFECTS: returns listofBudgets names in a arraylist filled with strings that contains the names of budgets
+    // EFFECTS: returns listofBudgets names in a arraylist filled with strings that contains the names of budgets.json
     public List<String> getListOfName() {
         ArrayList<String> listOfNames = new ArrayList<>();
         for (int i = 0; i < listOfBudgets.size(); i++) {
@@ -50,11 +50,11 @@ public class BudgetManager implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("budgets", budgetsToJson());
+        json.put("budgets.json", budgetsToJson());
         return json;
     }
 
-    // EFFECTS: returns budgets in this budgetmanager as a JSON array
+    // EFFECTS: returns budgets.json in this budgetmanager as a JSON array
     private JSONArray budgetsToJson() {
         JSONArray jsonArray = new JSONArray();
 

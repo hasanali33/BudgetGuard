@@ -53,7 +53,7 @@ public class JsonReader {
     }
 
     // MODIFIES: wr
-    // EFFECTS: parses budgets from JSON object and adds them to BudgetManager
+    // EFFECTS: parses budgets.json from JSON object and adds them to BudgetManager
     private void addBudgets(BudgetManager bm, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("budgets"); // getting first list of items(first square bracket)
         // in jsonARRAY is listofbudget
@@ -79,7 +79,7 @@ public class JsonReader {
             String date = purchase.getString("date");
             int price = purchase.getInt("price");
 
-            Purchase newPurchase = new Purchase(nameOfPurchase, type, date, price);
+            Purchase newPurchase = new Purchase(date, type, nameOfPurchase, price);
             budget.addPurchase(newPurchase);
         }
         // inside of for loop going thru purchases

@@ -25,7 +25,7 @@ public class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderBudgetManagerEmpty() {
-        JsonReader reader = new JsonReader("./data/testReaderBudgetManagerEmpty");
+        JsonReader reader = new JsonReader("./data/testReaderBudgetManagerEmpty.json");
         try {
             BudgetManager bm = reader.read();
             assertEquals(0, bm.getListOfBudgets().size());
@@ -36,7 +36,7 @@ public class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderBudgetManagerFull() {
-        JsonReader reader = new JsonReader("./data/testReaderBudgetManagerFull");
+        JsonReader reader = new JsonReader("./data/testReaderBudgetManagerFull.json");
         try {
             BudgetManager bm = reader.read();
             assertEquals("Budget1", bm.getListOfBudgets().get(0).getName());
