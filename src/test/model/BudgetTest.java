@@ -184,25 +184,25 @@ public class BudgetTest {
 
     }
 
-    @Test
-    public void testPurchasesToJson() {
-        Budget budget1 = new Budget("london");
-        //Budget budget2 = new Budget("tokyo");
-
-        Purchase purchase1 = new Purchase("july 11", "food", "taco bell", 90);
-        Purchase purchase2 = new Purchase("sept 5", "travel", "airline ticket", 500);
-
-        budget1.addPurchase(purchase1);
-        budget1.addPurchase(purchase2);
-
-        JSONObject json = new JSONObject();
-
-        //json.put("name", budget1.getName());
-        json.put("purchases", budget1.getListOfPurchases());
-
-        assertEquals(json.toString(), budget1.purchasesToJson().toString());
-
-    }
+//    @Test
+//    public void testPurchasesToJson() {
+//        Budget budget1 = new Budget("london");
+//        //Budget budget2 = new Budget("tokyo");
+//
+//        Purchase purchase1 = new Purchase("july 11", "food", "taco bell", 90);
+//        Purchase purchase2 = new Purchase("sept 5", "travel", "airline ticket", 500);
+//
+//        budget1.addPurchase(purchase1);
+//        budget1.addPurchase(purchase2);
+//
+//        JSONObject json = new JSONObject();
+//
+//        //json.put("name", budget1.getName());
+//        json.put("purchases", budget1.getListOfPurchases());
+//
+//        assertEquals(json.toString(), budget1.purchasesToJson().toString());
+//
+//    }
 
 
     @Test
