@@ -108,7 +108,7 @@ public class Budget implements Writable {
     }
 
     // EFFECTS: returns purchases in this listofpurchases as a JSON array
-    private JSONArray purchasesToJson() {
+    public JSONArray purchasesToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Purchase p : listofPurchases) {

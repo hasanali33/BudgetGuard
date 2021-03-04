@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import persistence.JsonWriter;
 
 import java.util.List;
 
@@ -70,4 +73,41 @@ public class BudgetManagerTest {
         assertEquals("London", listOfBudgets.getName());
 
     }
+
+//    @Test
+//    public void testBudgetsToJSON() {
+//        Budget budget = new Budget("london");
+//        Budget budget2 = new Budget("tokyo");
+//
+//        budgetManagerTest.getListOfBudgets().add(budget);
+//        budgetManagerTest.getListOfBudgets().add(budget2);
+//
+//        JSONObject json = new JSONObject();
+//        json.put("name", budgetManagerTest.getListOfBudgets().get(0).getName());
+//        json.put("purchases", budgetManagerTest.getListOfBudgets().get(0).getListOfPurchases());
+//        // is it overrriding? how to avoid?
+//        json.put("name", budgetManagerTest.getListOfBudgets().get(1).getName());
+//        json.put("purchases", budgetManagerTest.getListOfBudgets().get(1).getListOfPurchases());
+//
+//
+//
+//
+//
+//        //assertEquals(1, budgetManagerTest.getListOfBudgets().size());
+//        //JSONArray testArray = budgetManagerTest.budgetsToJson();
+//        assertEquals(json.toString(), budgetManagerTest.budgetsToJson().toString());
+//    }
+
+//    @Test
+//    public void testToJSON() {
+//        Budget budget = new Budget("london");
+//        budgetManagerTest.getListOfBudgets().add(budget);
+//
+//        JSONObject json = new JSONObject();
+//        json.put("name", budgetManagerTest.getListOfBudgets().get(0).getName());
+//        json.put("purchases", budgetManagerTest.getListOfBudgets().get(0).getListOfPurchases());
+//
+//        assertEquals(json.toString(), budgetManagerTest.budgetsToJson().toString());
+//
+//    }
 }

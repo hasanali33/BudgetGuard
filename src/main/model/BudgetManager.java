@@ -50,12 +50,12 @@ public class BudgetManager implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("budgets.json", budgetsToJson());
+        json.put("budgets", budgetsToJson());
         return json;
     }
 
-    // EFFECTS: returns budgets.json in this budgetmanager as a JSON array
-    private JSONArray budgetsToJson() {
+    // EFFECTS: returns budgets in this budgetmanager as a JSON array
+    public JSONArray budgetsToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Budget b : listOfBudgets) {

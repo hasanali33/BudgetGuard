@@ -1,0 +1,45 @@
+{"budgets": [
+    {
+        "purchases": [
+            {
+                "date": "july 11",
+                "price": 40,
+                "name": "purchase1",
+                "type": "food"
+            },
+            {
+                "date": "july 5",
+                "price": 12,
+                "name": "purchase2",
+                "type": "travel"
+            }
+        ],
+        "name": "Budget1"
+    },
+    {
+        "purchases": [{
+            "date": "july 13",
+            "price": 40,
+            "name": "purchase9",
+            "type": "food"
+        }],
+        "name": "budget2"
+    },
+    {
+        "purchases": [
+            {
+                "date": "july 23",
+                "price": 900,
+                "name": "purchase4",
+                "type": "school"
+            },
+            {
+                "date": "july 11",
+                "price": 20,
+                "name": "purchase8",
+                "type": "food"
+            }
+        ],
+        "name": "budget3"
+    }
+]}
