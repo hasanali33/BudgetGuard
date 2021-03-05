@@ -14,6 +14,12 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class JsonReader {
+
+    // Represents a reader that reads BudgetManager from JSONFile
+    // Citation: code taken and modified from JsonReader.javapackage in JsonSerializationDemo
+
+
+
     private String source;
 
 
@@ -53,7 +59,7 @@ public class JsonReader {
     }
 
     // MODIFIES: wr
-    // EFFECTS: parses budgets.json from JSON object and adds them to BudgetManager
+    // EFFECTS: parses budgets from JSON object and adds them to BudgetManager
     private void addBudgets(BudgetManager bm, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("budgets"); // getting first list of items(first square bracket)
         // in jsonARRAY is listofbudget

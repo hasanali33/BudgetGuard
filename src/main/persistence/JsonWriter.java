@@ -8,6 +8,8 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class JsonWriter {
+    // Represents a writer that writes BudgetManager to JSONFile
+    // Citation: code taken and modified from JsonWriter.javapackage in JsonSerializationDemo
 
 
     private static final int TAB = 4;

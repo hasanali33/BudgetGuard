@@ -47,6 +47,7 @@ public class BudgetManager implements Writable {
         return listOfNames;
     }
 
+    // EFFECTS: See interface Writable
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -55,7 +56,7 @@ public class BudgetManager implements Writable {
     }
 
     // EFFECTS: returns budgets in this budgetmanager as a JSON array
-    public JSONArray budgetsToJson() {
+    private JSONArray budgetsToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Budget b : listOfBudgets) {

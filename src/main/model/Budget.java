@@ -99,6 +99,7 @@ public class Budget implements Writable {
     }
 
 
+    // EFFECTS: See interface Writable
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -107,8 +108,8 @@ public class Budget implements Writable {
         return json;
     }
 
-    // EFFECTS: returns purchases in this listofpurchases as a JSON array
-    public JSONArray purchasesToJson() {
+    // EFFECTS: returns purchases in this listofpurchases as a JSONArray
+    private JSONArray purchasesToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Purchase p : listofPurchases) {

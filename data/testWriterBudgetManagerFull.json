@@ -1,32 +1,28 @@
-{
-  "budgets": [
+{"budgets": [
     {
-      "name": "Budget1",
-      "purchases": [
-        {
-          "date": "july 11",
-          "type": "food",
-          "name": "purchase1",
-          "price": 40
-        },
-        {
-          "date": "july 5",
-          "type": "travel",
-          "name": "purchase2",
-          "price": 12
-        }
-      ]
+        "purchases": [
+            {
+                "date": "july 11",
+                "price": 40,
+                "name": "purchase1",
+                "type": "food"
+            },
+            {
+                "date": "july 5",
+                "price": 12,
+                "name": "purchase2",
+                "type": "travel"
+            }
+        ],
+        "name": "Budget1"
     },
     {
-      "name": "budget2",
-      "purchases": [
-        {
-          "name": "purchase1",
-          "type": "food",
-          "date": "july 13",
-          "price": 40
-        }
-      ]
+        "purchases": [{
+            "date": "july 13",
+            "price": 40,
+            "name": "purchase1",
+            "type": "food"
+        }],
+        "name": "budget2"
     }
-  ]
-}
+]}

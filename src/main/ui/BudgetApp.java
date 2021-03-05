@@ -147,7 +147,7 @@ public class BudgetApp {
         System.out.println("6) Quit");
     }
 
-    // EFFECTS: prints the names of all the budgets.json in the list
+    // EFFECTS: prints the names of all the budgets in the list
     private void viewAllBudgets() {
         for (Budget budget : budgetManager.getListOfBudgets()) {
             System.out.println(budget.getName());
@@ -331,7 +331,7 @@ public class BudgetApp {
     }
 
 
-    // EFFECTS: saves the workroom to file
+    // EFFECTS: saves the budgets to file
     private void saveBudgets() {
         try {
             jsonWriter.open();
@@ -344,7 +344,7 @@ public class BudgetApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads budgets from file
     private void loadBudgets() {
         try {
             budgetManager = jsonReader.read();

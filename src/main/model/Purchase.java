@@ -41,6 +41,7 @@ public class Purchase implements Writable {
         return this.price;
     }
 
+    // EFFECTS: See interface Writable
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

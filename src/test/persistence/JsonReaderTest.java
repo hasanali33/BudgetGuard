@@ -62,6 +62,9 @@ public class JsonReaderTest extends JsonTest {
             checkPurchase("purchase1", "food", "july 11", 40, purchases.get(0));
             checkPurchase("purchase2", "travel", "july 5", 12, purchases.get(1));
 
+
+            // compare both budgetmanagers to see if budgetstojson and purchasestojson works
+
             BudgetManager bm2 = new BudgetManager();
             Budget budget1 = new Budget("Budget1");
             Budget budget2 = new Budget("budget2");
@@ -92,12 +95,10 @@ public class JsonReaderTest extends JsonTest {
             JsonReader reader2 = new JsonReader("./data/testWriterBudgetManager.json");
             bm2 = reader2.read();
 
-            assertEquals(bm2.budgetsToJson().toString(), bm.budgetsToJson().toString());
+            assertEquals(bm2.toJson().toString(), bm.toJson().toString());
 
-            assertEquals(bm2.getListOfBudgets().get(0).purchasesToJson().toString(), bm.getListOfBudgets().get(0).purchasesToJson().toString());
-            //assertEquals(json.toString(), bm.budgetsToJson().toString());
-
-            //assertEquals(,bm.getListOfBudgets().get(0).purchasesToJson());
+            assertEquals(bm2.getListOfBudgets().get(0).toJson().toString(),
+                    bm.getListOfBudgets().get(0).toJson().toString());
 
 
         } catch (IOException e) {
