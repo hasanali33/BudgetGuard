@@ -36,6 +36,10 @@ public class BudgetManager implements Writable {
         return listOfBudgets;
     }
 
+    public void setListOfBudgets(List<Budget> budgets) {
+        this.listOfBudgets = budgets;
+    }
+
     // EFFECTS: returns listofBudgets names in a arraylist filled with strings that contains the names of budgets.json
     public List<String> getListOfName() {
         ArrayList<String> listOfNames = new ArrayList<>();

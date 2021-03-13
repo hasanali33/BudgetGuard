@@ -1,20 +1,43 @@
 {"budgets": [
     {
         "purchases": [{
-            "date": "july 11",
-            "price": 50,
+            "date": "w",
+            "price": 22,
+            "name": "w",
+            "type": "w"
+        }],
+        "name": "w"
+    },
+    {
+        "purchases": [{
+            "date": "june 5",
+            "price": 900,
             "name": "taco bell",
             "type": "food"
         }],
         "name": "london"
     },
     {
-        "purchases": [{
-            "date": "august 8",
-            "price": 900,
-            "name": "airline ticket",
-            "type": "travel"
-        }],
-        "name": "ireland"
+        "purchases": [
+            {
+                "date": "july 11",
+                "price": 50,
+                "name": "airline ticket",
+                "type": "travel"
+            },
+            {
+                "date": "june 8",
+                "price": 90,
+                "name": "taco bell",
+                "type": "food"
+            },
+            {
+                "date": "august 5",
+                "price": 9000,
+                "name": "school fees",
+                "type": "other"
+            }
+        ],
+        "name": "tokyo"
     }
 ]}
