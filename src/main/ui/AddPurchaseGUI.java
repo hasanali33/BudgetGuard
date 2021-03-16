@@ -36,12 +36,17 @@ public class AddPurchaseGUI implements ActionListener {
         this.panel2 = panel2;
         this.frame = frame;
         this.frame3 = frame3;
+        setUpTextFields();
         parent = new JFrame();
-        nameofpurchase = new JTextField();
-        date = new JTextField();
-        type = new JTextField();
-        price = new JTextField();
         fields = new ArrayList<>();
+        list.addMouseListener(new MouseAdapter() {
+
+            @Override
+        public void mouseClicked(MouseEvent e) {
+                s = (String) list.getSelectedValue();
+                System.out.println("Value Selected: " + s);
+            }
+        });
         fields.add(nameofpurchase);
         fields.add(date);
         fields.add(type);
@@ -49,15 +54,17 @@ public class AddPurchaseGUI implements ActionListener {
     }
 
 
+    public void setUpTextFields() {
+        nameofpurchase = new JTextField();
+        date = new JTextField();
+        type = new JTextField();
+        price = new JTextField();
+
+    }
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        list.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                s = (String) list.getSelectedValue();
-                System.out.println("Value Selected: " + s);
-            }
-        });
         nameOfBudget = new JLabel(s);
         Object[] message = {
                 "Name of Budget", nameOfBudget,

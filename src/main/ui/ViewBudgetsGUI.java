@@ -29,21 +29,31 @@ public class ViewBudgetsGUI implements ActionListener {
         this.panel = panel;
         panel2 = new JPanel();
         frame3 = new JFrame();
+        setUpFrame();
+        setUpButtons();
+       // String[] listofBudgetNames = listOfBudgetNames(bm.getListOfBudgets());
+        list = new JList();
+        frame3.add(list);
+        frame3.pack();
+    }
+
+    public void setUpFrame() {
         frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); /// what happens if window closes
         frame3.setLayout(new BorderLayout());         // helpful for down the road?
         frame3.add(panel2, BorderLayout.PAGE_END);  //  adds the panel into the window frame and give its
         // a proper layout
         frame3.setTitle("Budget Manager");           // sets the title for the frame
+
+    }
+
+    public void setUpButtons() {
         backButton = new JButton("Back");
         panel2.add(backButton);
         addPurchase = new JButton("Add Purchase");
         panel2.add(addPurchase);
         showDetails = new JButton("Show Details");
         panel2.add(showDetails);
-       // String[] listofBudgetNames = listOfBudgetNames(bm.getListOfBudgets());
-        list = new JList();
-        frame3.add(list);
-        frame3.pack();
+
     }
 
 
@@ -66,7 +76,7 @@ public class ViewBudgetsGUI implements ActionListener {
             frame3.setVisible(false);
         });
         addPurchase.addActionListener(new AddPurchaseGUI(bm, list, panel, panel2, frame, frame3));
-        //showDetails.addActionListener(new ShowDetailsGUI(bm));
+        //showDetails.addActionListener(new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, backButton));
     }
 
 
