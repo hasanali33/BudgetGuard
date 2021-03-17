@@ -4,6 +4,8 @@ import model.Budget;
 import model.BudgetManager;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.text.View;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,6 +24,8 @@ public class ViewBudgetsGUI implements ActionListener {
     private JList list;
     private JPanel panel2;
     private JFrame frame3;
+    private String value;
+    private ListSelectionListener listener;
 
     public ViewBudgetsGUI(BudgetManager bm, JFrame frame, JPanel panel) {
         this.bm = bm;
@@ -35,6 +39,44 @@ public class ViewBudgetsGUI implements ActionListener {
         list = new JList();
         frame3.add(list);
         frame3.pack();
+        listener = new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (e.getValueIsAdjusting()) {
+                    System.out.println("Hello you selected me!  "
+                            + list.getSelectedValue().toString());
+                    value = list.getSelectedValue().toString();
+                }
+//                System.out.println("Hello you selected me!  "
+//                        + list.getSelectedValue().toString());
+//                value = list.getSelectedValue().toString();
+            }
+        };
+
+        list.addListSelectionListener(listener);
+        addPurchase.addActionListener((t) -> {
+            frame.setVisible(false);
+            panel.setVisible(false);
+            frame3.setVisible(true);
+            new AddPurchaseGUI(bm, list, panel, panel2, frame, frame3, value);
+            // list.removeListSelectionListener(listener);
+        });
+
+        showDetails.addActionListener((f) -> {
+            frame.setVisible(false);
+            panel.setVisible(false);
+            frame3.setVisible(true);
+            new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, value);
+            //  showDetails.addActionListener(new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, value));
+        });
+
+//            @Override
+//            public void valueChanged(ListSelectionEvent e) {
+//                System.out.println("Hello you selected me!  "
+//                        + list.getSelectedValue().toString());
+//                value = list.getSelectedValue().toString();
+//            }
+//        });
     }
 
     public void setUpFrame() {
@@ -60,7 +102,7 @@ public class ViewBudgetsGUI implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String[] listofBudgetNames = listOfBudgetNames(bm.getListOfBudgets());
-        list.clearSelection();
+        //list.clearSelection();
         DefaultListModel model = new DefaultListModel();
         for (int i = 0; i < listofBudgetNames.length; i++) {
             model.addElement(listofBudgetNames[i]);
@@ -74,9 +116,11 @@ public class ViewBudgetsGUI implements ActionListener {
             frame.setVisible(true);
             panel.setVisible(true);
             frame3.setVisible(false);
+           // list.removeListSelectionListener(listener);
         });
-        addPurchase.addActionListener(new AddPurchaseGUI(bm, list, panel, panel2, frame, frame3));
-        //showDetails.addActionListener(new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, backButton));
+//        addPurchase.addActionListener(new AddPurchaseGUI(bm, list, panel, panel2, frame, frame3, value));
+//        showDetails.addActionListener(new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, value));
+        System.out.println(showDetails.getActionListeners());
     }
 
 

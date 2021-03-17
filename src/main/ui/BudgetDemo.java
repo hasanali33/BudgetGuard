@@ -19,11 +19,8 @@ import java.util.List;
 
 public class BudgetDemo extends JFrame implements ListSelectionListener, ActionListener {
     private JFrame frame;
-    private JFrame frame2;
     private JPanel panel;
-    private JPanel panelAddBudget;
     private JList<Budget> list;
-    // private DefaultListModel
     private JButton addBudget;
     private JButton saveBudget;
     private JButton loadBudget;
@@ -31,12 +28,7 @@ public class BudgetDemo extends JFrame implements ListSelectionListener, ActionL
     private JButton addPurchase;
     private JButton showDetails;
     private JButton backButton;
-    private Scanner input;
-    private Scanner inputTwo;
-
     private BudgetManager budgetManager;
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
     private static final String JSON_STORE = "./data/budgets.json";
 
     // use a table to show purchases JTable
@@ -85,28 +77,13 @@ public class BudgetDemo extends JFrame implements ListSelectionListener, ActionL
 
     public void prepareButtons() {
         // should i put this in own method?
+        //addBudget.doClick();
         addBudget.addActionListener(new AddBudgetGUI(budgetManager));
         saveBudget.addActionListener(new SaveBudgetsGUI(budgetManager));
         loadBudget.addActionListener(new LoadBudgetsGUI(budgetManager));
         viewBudgets.addActionListener(new ViewBudgetsGUI(budgetManager, frame, panel));
     }
 
-
-//        List<Budget> budgets = budgetManager.getListOfBudgets();
-//        List<Budget> budgets2 = budgetManager.getListOfBudgets();
-//        DefaultListModel<String> model = new DefaultListModel<>();
-//        //JList<String> list = new JList<>(model);
-//
-//        for (int i = 0; i < budgets.size(); i++) {
-//            model.addElement(budgets.get(i).getName());
-//        }
-//        model.addElement("Testing");
-//        JList<String> list = new JList<>(model);
-//        list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-//        list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-//        list.setVisibleRowCount(-1);
-//        JScrollPane listScroller = new JScrollPane((Component) budgets2);
-//        this.add(list);
 
     // EFFECTS: returns list of budget names in a list of String
     public String[] listOfBudgetNames(List<Budget> list) {

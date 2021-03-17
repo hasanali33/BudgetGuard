@@ -5,12 +5,12 @@ import model.BudgetManager;
 import model.Purchase;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.List;
 
 public class ShowDetailsUI implements ActionListener {
@@ -22,47 +22,99 @@ public class ShowDetailsUI implements ActionListener {
     private JFrame frame3;
     private JFrame frame4;
     private JTable table;
-    private String s;
+    private String value;
     private DefaultTableModel tableModel;
-    private JPanel panelnewer;
     private JButton backButton;
+    private String[] columns;
+    private MouseListener mouse;
 
     public ShowDetailsUI(BudgetManager bm, JList list, JPanel panel, JPanel panel2,
-                         JFrame frame, JFrame frame3, JButton button) {
+                         JFrame frame, JFrame frame3, String value) {
         this.bm = bm;
         this.list = list;
         this.panel = panel;
         this.panel2 = panel2;
         this.frame = frame;
         this.frame3 = frame3;
+        this.value = value;
         frame4 = new JFrame();
-        this.backButton = button;
-        String[] columns = new String[] {
+        Budget budget = bm.viewBudgetsByName(value);
+        List<Purchase> listOfPurchases = budget.getListOfPurchases();
+        columns = new String[] {
                 "Date", "Type", "Name", "Price"
         };
-        list.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                s = (String) list.getSelectedValue();
-                System.out.println("Value Selected: " + s);
-            }
-        });
-        Budget budget = bm.viewBudgetsByName(s);
-        List<Purchase> listOfPurchases = budget.getListOfPurchases();
         tableModel = new DefaultTableModel(columns, 0);
         TableModel data = convertData(listOfPurchases);
         table = new JTable(data);
-        frame4.add(table);
+        table.setDefaultEditor(Object.class, null); // disables user edits onto text box
+        frame4.add(new JScrollPane(table));
+        //frame4.add(table);
+        frame4.setVisible(true);
+//        ListSelectionListener listSelectionListener = new ListSelectionListener() {
+//            @Override
+//            public void valueChanged(ListSelectionEvent e) {
+//                System.out.println("First index: " + e.getFirstIndex());
+//                System.out.println(", Last index: " + e.getLastIndex());
+//                boolean adjust = e.getValueIsAdjusting();
+//                System.out.println(", Adjusting? " + adjust);
+//                if (!adjust) {
+//                    JList listed = (JList) e.getSource();
+//                    int selections[] = listed.getSelectedIndices();
+//                    Object selectionValues[] = listed.getSelectedValues();
+//                    for (int i = 0, n = selections.length; i < n; i++) {
+//                        if (i == 0) {
+//                            System.out.println(" Selections: ");
+//                        }
+//                        System.out.println(selections[i] + "/" + selectionValues[i] + " ");
+//                    }
+//                }
+//            }
+//        };
+//        list.addListSelectionListener(listSelectionListener);
+//
+//        frame.setSize(350, 200);
+//        frame.setVisible(true);
+//
+//    }
+//        }
+//        list.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                s = (String) list.getSelectedValue();
+//                System.out.println("Value Selectedddd: " + s);
+//            }
+//        });
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("buttttttton");
-        frame4.setVisible(true);
-        backButton.addActionListener((t) -> {
-            frame.setVisible(true);
-            panel.setVisible(true);
-            frame3.setVisible(false);
-        });
+        System.out.println("inside");
+//        Budget budget = bm.viewBudgetsByName(s);
+//        List<Purchase> listOfPurchases = budget.getListOfPurchases();
+//        columns = new String[] {
+//                "Date", "Type", "Name", "Price"
+//        };
+//        tableModel = new DefaultTableModel(columns, 0);
+//        TableModel data = convertData(listOfPurchases);
+//        table = new JTable(data);
+//        table.setDefaultEditor(Object.class, null); // disables user edits onto text box
+//        frame4.add(new JScrollPane(table));
+//        //frame4.add(table);
+//        frame4.setVisible(true);
+
+
+//        frame4.addWindowListener(new WindowAdapter() {
+//            @Override
+//            public void windowClosing(WindowEvent e) {
+//                tableModel.setRowCount(0);
+//            }
+//        });
+        //list.removeMouseListener(mouse);
+
+        // purchases update but to a different window, sometimes not right budget
+        // when clicked it, it changes
+        // add purchase shows up again
+
     }
 
     public TableModel convertData(List<Purchase> list) {

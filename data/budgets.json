@@ -9,12 +9,77 @@
         "name": "henry"
     },
     {
-        "purchases": [{
-            "date": "dddd",
-            "price": 333,
-            "name": "dddd",
-            "type": "dddd"
-        }],
+        "purchases": [
+            {
+                "date": "dddd",
+                "price": 333,
+                "name": "dddd",
+                "type": "dddd"
+            },
+            {
+                "date": "july 11",
+                "price": 430,
+                "name": "bus ticket",
+                "type": "travel"
+            }
+        ],
         "name": "aaaaaa"
+    },
+    {
+        "purchases": [
+            {
+                "date": "June 15",
+                "price": 900,
+                "name": "Taco Bell",
+                "type": "Food"
+            },
+            {
+                "date": "October 19",
+                "price": 9873,
+                "name": "tuition",
+                "type": "School"
+            }
+        ],
+        "name": "london"
+    },
+    {
+        "purchases": [
+            {
+                "date": "August 1",
+                "price": 870,
+                "name": "airline ticket",
+                "type": "Travel"
+            },
+            {
+                "date": "March 17",
+                "price": 30,
+                "name": "Mcdonalds",
+                "type": "Food"
+            },
+            {
+                "date": "March 17",
+                "price": 50,
+                "name": "lamp",
+                "type": "supplies"
+            }
+        ],
+        "name": "Tokyo"
+    },
+    {
+        "purchases": [
+            {
+                "date": "may 3",
+                "price": 10,
+                "name": "table",
+                "type": "supplies"
+            },
+            {
+                "date": "January 2",
+                "price": 40,
+                "name": "smoothie",
+                "type": "food"
+            }
+        ],
+        "name": "Chicago"
     }
 ]}
