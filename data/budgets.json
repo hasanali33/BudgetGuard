@@ -38,6 +38,12 @@
                 "price": 9873,
                 "name": "tuition",
                 "type": "School"
+            },
+            {
+                "date": "August 3",
+                "price": 100,
+                "name": "phone",
+                "type": "Other"
             }
         ],
         "name": "london"
@@ -77,6 +83,18 @@
                 "date": "January 2",
                 "price": 40,
                 "name": "smoothie",
+                "type": "food"
+            },
+            {
+                "date": "May 3",
+                "price": 200,
+                "name": "food",
+                "type": "travel"
+            },
+            {
+                "date": "feb 12",
+                "price": 800,
+                "name": "ice cream",
                 "type": "food"
             }
         ],

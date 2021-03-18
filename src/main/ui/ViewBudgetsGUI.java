@@ -26,13 +26,13 @@ public class ViewBudgetsGUI implements ActionListener {
     private JFrame frame3;
     private String value;
     private ListSelectionListener listener;
+    private JButton showTotalSpent;
 
     public ViewBudgetsGUI(BudgetManager bm, JFrame frame, JPanel panel) {
         this.bm = bm;
         this.frame = frame;
         this.panel = panel;
         panel2 = new JPanel();
-        frame3 = new JFrame();
         setUpFrame();
         setUpButtons();
        // String[] listofBudgetNames = listOfBudgetNames(bm.getListOfBudgets());
@@ -47,39 +47,28 @@ public class ViewBudgetsGUI implements ActionListener {
                             + list.getSelectedValue().toString());
                     value = list.getSelectedValue().toString();
                 }
-//                System.out.println("Hello you selected me!  "
-//                        + list.getSelectedValue().toString());
-//                value = list.getSelectedValue().toString();
             }
         };
 
         list.addListSelectionListener(listener);
         addPurchase.addActionListener((t) -> {
-            frame.setVisible(false);
-            panel.setVisible(false);
-            frame3.setVisible(true);
+            setVisability();
             new AddPurchaseGUI(bm, list, panel, panel2, frame, frame3, value);
             // list.removeListSelectionListener(listener);
         });
-
         showDetails.addActionListener((f) -> {
-            frame.setVisible(false);
-            panel.setVisible(false);
-            frame3.setVisible(true);
+            setVisability();
             new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, value);
             //  showDetails.addActionListener(new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, value));
         });
-
-//            @Override
-//            public void valueChanged(ListSelectionEvent e) {
-//                System.out.println("Hello you selected me!  "
-//                        + list.getSelectedValue().toString());
-//                value = list.getSelectedValue().toString();
-//            }
-//        });
+        showTotalSpent.addActionListener((g) -> {
+            setVisability();
+            new TotalSpentGUI(bm, list, panel, panel2, frame, frame3, value);
+        });
     }
 
     public void setUpFrame() {
+        frame3 = new JFrame();
         frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); /// what happens if window closes
         frame3.setLayout(new BorderLayout());         // helpful for down the road?
         frame3.add(panel2, BorderLayout.PAGE_END);  //  adds the panel into the window frame and give its
@@ -95,7 +84,14 @@ public class ViewBudgetsGUI implements ActionListener {
         panel2.add(addPurchase);
         showDetails = new JButton("Show Details");
         panel2.add(showDetails);
+        showTotalSpent = new JButton("Show Total Spent");
+        panel2.add(showTotalSpent);
+    }
 
+    private void setVisability() {
+        frame.setVisible(false);
+        panel.setVisible(false);
+        frame3.setVisible(true);
     }
 
 

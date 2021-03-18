@@ -7,8 +7,13 @@ import model.Purchase;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
+
+import static com.sun.tools.internal.ws.wsdl.parser.Util.fail;
 
 public class AddPurchaseGUI implements ActionListener {
     private BudgetManager bm;
@@ -29,6 +34,7 @@ public class AddPurchaseGUI implements ActionListener {
     private Object[] message;
     private int priceInt;
 
+    // EFFECTS: constructs a AddPurchaseGUI with a budgetmanager, JList, 2 JPanels, 2 Jframes and 1 string
     public AddPurchaseGUI(BudgetManager bm, JList list, JPanel panel, JPanel panel2,
                           JFrame frame, JFrame frame3, String value) {
         this.bm = bm;
@@ -42,11 +48,7 @@ public class AddPurchaseGUI implements ActionListener {
         parent = new JFrame();
         fields = new ArrayList<>();
         nameOfBudget = new JLabel(value);
-        fields.add(nameofpurchase);
-        fields.add(date);
-        fields.add(type);
-        fields.add(price);
-
+        addFieldsToArrayList();
         message = new Object[]{
                 "Name of Budget", nameOfBudget,
                 "Date of purchase", date,
@@ -61,6 +63,7 @@ public class AddPurchaseGUI implements ActionListener {
     }
 
 
+    // EFFECTS: constructs the nameOfPurchase, data, type and price JTextField
     public void setUpTextFields() {
         nameofpurchase = new JTextField();
         date = new JTextField();
@@ -69,21 +72,31 @@ public class AddPurchaseGUI implements ActionListener {
 
     }
 
+    // EFFECTS: adds all the necessary text fields into the Fields ArrayList
+    public void addFieldsToArrayList() {
+        fields.add(nameofpurchase);
+        fields.add(date);
+        fields.add(type);
+        fields.add(price);
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (result == JOptionPane.YES_OPTION) {
-            Purchase purchase = new Purchase(date.getText(),
-                    type.getText(), nameofpurchase.getText(), priceInt);
-            Budget budget = bm.viewBudgetsByName(value);
-            budget.addPurchase(purchase);
-            System.out.println(budget.getListOfPurchases());
-            clearFields();
-        }
+//        if (result == JOptionPane.YES_OPTION) {
+//            Purchase purchase = new Purchase(date.getText(),
+//                    type.getText(), nameofpurchase.getText(), priceInt);
+//            Budget budget = bm.viewBudgetsByName(value);
+//            budget.addPurchase(purchase);
+//            System.out.println(budget.getListOfPurchases());
+//            clearFields();
+//        }
     }
 
 
 
+    // MODIFIES: fields
+    // EFFECTS: clears all the Jtext fields in the ArrayList
     public void clearFields() {
         for (JTextField field : fields) {
             field.setText(null);
@@ -91,6 +104,7 @@ public class AddPurchaseGUI implements ActionListener {
 
     }
 
+    // EFFECTS: when yes is clicked, a purchase is made and added to the budget, as well as a sound goes off
     public void addPurchaseToBudgetWhenYesIsClicked() {
         if (result == JOptionPane.YES_OPTION) {
             Purchase purchase = new Purchase(date.getText(),
@@ -98,6 +112,15 @@ public class AddPurchaseGUI implements ActionListener {
             Budget budget = bm.viewBudgetsByName(value);
             budget.addPurchase(purchase);
             System.out.println(budget.getListOfPurchases());
+            URL soundbyte = null;
+            try {
+                soundbyte = new File("data/sound.wav").toURI().toURL();
+            } catch (MalformedURLException e) {
+                fail("fail does not work");
+            }
+            java.applet.AudioClip clip = java.applet.Applet.newAudioClip(soundbyte);
+            clip.play();
+
             clearFields();
         }
     }

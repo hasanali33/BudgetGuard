@@ -28,6 +28,7 @@ public class ShowDetailsUI implements ActionListener {
     private String[] columns;
     private MouseListener mouse;
 
+    // EFFECTS: constructs a ShowDetailsUI with a budgetmanager, a JList, 2 JPanels, 2 JFrames, and a string
     public ShowDetailsUI(BudgetManager bm, JList list, JPanel panel, JPanel panel2,
                          JFrame frame, JFrame frame3, String value) {
         this.bm = bm;
@@ -58,6 +59,7 @@ public class ShowDetailsUI implements ActionListener {
 
     }
 
+    // EFFECTS: converts the list of purchases into an object that is added into the tablemodel
     public TableModel convertData(List<Purchase> list) {
         for (int i = 0; i < list.size(); i++) {
             String date = list.get(i).getDate();
