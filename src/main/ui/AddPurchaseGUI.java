@@ -42,13 +42,6 @@ public class AddPurchaseGUI implements ActionListener {
         parent = new JFrame();
         fields = new ArrayList<>();
         nameOfBudget = new JLabel(value);
-//        list.addMouseListener(new MouseAdapter() {
-//            @Override
-//        public void mouseClicked(MouseEvent e) {
-//                s = (String) list.getSelectedValue();
-//                System.out.println("Value Selected: " + s);
-//            }
-//        });
         fields.add(nameofpurchase);
         fields.add(date);
         fields.add(type);
@@ -79,19 +72,6 @@ public class AddPurchaseGUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        Object[] message = {
-//                "Name of Budget", nameOfBudget,
-//                "Date of purchase", date,
-//                "Type of purchase", type,
-//                "Name of purchase", nameofpurchase,
-//                "Price of purchase", price
-//        };
-
-        //int result = JOptionPane.showConfirmDialog(parent, message);
-//        result = JOptionPane.showConfirmDialog(parent, message);
-//        String priceString = price.getText();
-//        int priceInt = Integer.parseInt(priceString);
-
         if (result == JOptionPane.YES_OPTION) {
             Purchase purchase = new Purchase(date.getText(),
                     type.getText(), nameofpurchase.getText(), priceInt);
@@ -122,11 +102,3 @@ public class AddPurchaseGUI implements ActionListener {
         }
     }
 }
-
-// not clicking right away when I select an element on the list, it has to wait
-// once budget is found, then add purchase.
-
-            //budget.getListOfPurchases().add(purchase);
-            // bm.getListOfBudgets().add(budget);
-
-    //super.mouseClicked(e);
