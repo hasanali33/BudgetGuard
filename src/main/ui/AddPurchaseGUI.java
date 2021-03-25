@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
 
-import static com.sun.tools.internal.ws.wsdl.parser.Util.fail;
 
 public class AddPurchaseGUI {
     private BudgetManager bm;
@@ -102,7 +101,7 @@ public class AddPurchaseGUI {
             try {
                 soundbyte = new File("data/sound.wav").toURI().toURL();
             } catch (MalformedURLException e) {
-                fail("fail does not work");
+                System.out.println("does not work");
             }
             java.applet.AudioClip clip = java.applet.Applet.newAudioClip(soundbyte);
             clip.play();
