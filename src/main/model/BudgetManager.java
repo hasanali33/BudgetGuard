@@ -36,6 +36,8 @@ public class BudgetManager implements Writable {
         return listOfBudgets;
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets the budgets passed in, to the listofbudgets in the object
     public void setListOfBudgets(List<Budget> budgets) {
         this.listOfBudgets = budgets;
     }

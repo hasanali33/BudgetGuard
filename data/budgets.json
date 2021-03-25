@@ -99,5 +99,51 @@
             }
         ],
         "name": "Chicago"
+    },
+    {
+        "purchases": [
+            {
+                "date": "may 5",
+                "price": 100,
+                "name": "donuts",
+                "type": "food"
+            },
+            {
+                "date": "July 1",
+                "price": 320,
+                "name": "airplane ticket",
+                "type": "travel"
+            },
+            {
+                "date": "august 3",
+                "price": 300,
+                "name": "1000",
+                "type": "tuition"
+            },
+            {
+                "date": "august 8",
+                "price": 900,
+                "name": "ubc",
+                "type": "tuiton"
+            }
+        ],
+        "name": "Vancouver"
+    },
+    {
+        "purchases": [
+            {
+                "date": "june 4",
+                "price": 1,
+                "name": "water",
+                "type": "other"
+            },
+            {
+                "date": "october 3",
+                "price": 90,
+                "name": "bananas",
+                "type": "food"
+            }
+        ],
+        "name": "japan"
     }
 ]}

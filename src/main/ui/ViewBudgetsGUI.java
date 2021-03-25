@@ -28,6 +28,7 @@ public class ViewBudgetsGUI implements ActionListener {
     private ListSelectionListener listener;
     private JButton showTotalSpent;
 
+    // EFFECTS: constructs a viewbudgetsgui with a budgetmanager, Jframe, and JPanel
     public ViewBudgetsGUI(BudgetManager bm, JFrame frame, JPanel panel) {
         this.bm = bm;
         this.frame = frame;
@@ -35,7 +36,6 @@ public class ViewBudgetsGUI implements ActionListener {
         panel2 = new JPanel();
         setUpFrame();
         setUpButtons();
-       // String[] listofBudgetNames = listOfBudgetNames(bm.getListOfBudgets());
         list = new JList();
         frame3.add(list);
         frame3.pack();
@@ -51,22 +51,12 @@ public class ViewBudgetsGUI implements ActionListener {
         };
 
         list.addListSelectionListener(listener);
-        addPurchase.addActionListener((t) -> {
-            setVisability();
-            new AddPurchaseGUI(bm, list, panel, panel2, frame, frame3, value);
-            // list.removeListSelectionListener(listener);
-        });
-        showDetails.addActionListener((f) -> {
-            setVisability();
-            new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, value);
-            //  showDetails.addActionListener(new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, value));
-        });
-        showTotalSpent.addActionListener((g) -> {
-            setVisability();
-            new TotalSpentGUI(bm, list, panel, panel2, frame, frame3, value);
-        });
+        addPurchaseActionLister();
+        setShowDetailsActionLister();
+        setShowTotalSpentActionLister();
     }
 
+    // EFFECTS: initialzes the frame and sets up the necessary operations in it
     public void setUpFrame() {
         frame3 = new JFrame();
         frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); /// what happens if window closes
@@ -77,6 +67,33 @@ public class ViewBudgetsGUI implements ActionListener {
 
     }
 
+    // EFFECTS: sets up the addPurchaseActionListener and passes the addpurchasegui constuctor
+    public void addPurchaseActionLister() {
+        addPurchase.addActionListener((t) -> {
+            setVisability();
+            new AddPurchaseGUI(bm, list, panel, panel2, frame, frame3, value);
+            // list.removeListSelectionListener(listener);
+        });
+    }
+
+    // EFFECTS: sets up the ShowDetailsActionListener and passes the showdetailsgui constuctor
+    public void setShowDetailsActionLister() {
+        showDetails.addActionListener((f) -> {
+            setVisability();
+            new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, value);
+            //  showDetails.addActionListener(new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, value));
+        });
+    }
+
+    // EFFECTS: sets up the TotalSpentActionListener and passes the totalspentgui constuctor
+    public void setShowTotalSpentActionLister() {
+        showTotalSpent.addActionListener((g) -> {
+            setVisability();
+            new TotalSpentGUI(bm, list, panel, panel2, frame, frame3, value);
+        });
+    }
+
+    // EFFECTS: initializes the buttons and adds them to the panel
     public void setUpButtons() {
         backButton = new JButton("Back");
         panel2.add(backButton);
@@ -88,6 +105,7 @@ public class ViewBudgetsGUI implements ActionListener {
         panel2.add(showTotalSpent);
     }
 
+    //EFFECTS: sets the visablity of the two frames and panel
     private void setVisability() {
         frame.setVisible(false);
         panel.setVisible(false);
@@ -95,6 +113,8 @@ public class ViewBudgetsGUI implements ActionListener {
     }
 
 
+    // EFFECTS: sets visability, backbuttonaction listener is added, and converts the budgetnames into a
+    //           defaultlistmodel and sets the list to the model
     @Override
     public void actionPerformed(ActionEvent e) {
         String[] listofBudgetNames = listOfBudgetNames(bm.getListOfBudgets());
@@ -112,14 +132,12 @@ public class ViewBudgetsGUI implements ActionListener {
             frame.setVisible(true);
             panel.setVisible(true);
             frame3.setVisible(false);
-           // list.removeListSelectionListener(listener);
         });
-//        addPurchase.addActionListener(new AddPurchaseGUI(bm, list, panel, panel2, frame, frame3, value));
-//        showDetails.addActionListener(new ShowDetailsUI(bm, list, panel, panel2, frame, frame3, value));
         System.out.println(showDetails.getActionListeners());
     }
 
 
+    // EFFECTS: returns the list of budgetsNames in a String[] array form
     public String[] listOfBudgetNames(java.util.List<Budget> list) {
         List<String> listOfBudgetNames = new ArrayList<>();
         for (Budget i : list) {

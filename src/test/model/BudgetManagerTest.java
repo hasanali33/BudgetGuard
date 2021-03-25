@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import persistence.JsonWriter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -54,6 +55,18 @@ public class BudgetManagerTest {
         List<Budget> placeHolder = budgetManagerTest.getListOfBudgets();
 
         assertEquals(0, placeHolder.size());
+    }
+
+    @Test
+    public void testSetListOfBudgets() {
+        Budget Tokyo = new Budget("Tokyo");
+        List<Budget> budgets = new ArrayList<>();
+        budgets.add(Tokyo);
+        assertEquals(1, budgets.size());
+        assertEquals(0, budgetManagerTest.getListOfBudgets().size());
+        budgetManagerTest.setListOfBudgets(budgets);
+        assertEquals("Tokyo", budgetManagerTest.getListOfBudgets().get(0).getName());
+
     }
 
 

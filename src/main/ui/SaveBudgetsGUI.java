@@ -12,12 +12,14 @@ public class SaveBudgetsGUI implements ActionListener {
     private JsonWriter jsonWriter;
     private static final String JSON_STORE = "./data/budgets.json";
 
+    // EFFECTS: constructs a savebudgetsgui with a budgetmanager
     public SaveBudgetsGUI(BudgetManager bm) {
         this.bm = bm;
         jsonWriter = new JsonWriter(JSON_STORE);
     }
 
 
+    // EFFECTS: opens the jsonwriters, and writes/saves the budgetmanager into the file
     @Override
     public void actionPerformed(ActionEvent e) {
         try {

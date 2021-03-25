@@ -13,7 +13,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
-public class ShowDetailsUI implements ActionListener {
+public class ShowDetailsUI {
     private BudgetManager bm;
     private JList list;
     private JPanel panel;
@@ -51,12 +51,6 @@ public class ShowDetailsUI implements ActionListener {
         frame4.add(new JScrollPane(table));
         //frame4.add(table);
         frame4.setVisible(true);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("inside");
-
     }
 
     // EFFECTS: converts the list of purchases into an object that is added into the tablemodel

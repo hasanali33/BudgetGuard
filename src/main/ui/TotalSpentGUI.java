@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class TotalSpentGUI implements ActionListener {
+public class TotalSpentGUI {
     private BudgetManager bm;
     private JList list;
     private JPanel panel;
@@ -25,6 +25,7 @@ public class TotalSpentGUI implements ActionListener {
     private JPanel panel3;
 
 
+    // EFFECTS: constructs a totalspentgui with a budgetmanager, JList, 2 Jpanels, 2 Jframes, and a string value
     public TotalSpentGUI(BudgetManager bm, JList list, JPanel panel, JPanel panel2, JFrame frame, JFrame frame3,
                          String value) {
         this.bm = bm;
@@ -44,11 +45,7 @@ public class TotalSpentGUI implements ActionListener {
         showTotal.setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
-
+    // EFFECTS: returns the total cost of purchases in the specified budget
     public int showTotal() {
         Budget budget = bm.viewBudgetsByName(value);
         List<Purchase> purchaseList = budget.getListOfPurchases();

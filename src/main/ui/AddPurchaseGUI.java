@@ -15,7 +15,7 @@ import java.io.File;
 
 import static com.sun.tools.internal.ws.wsdl.parser.Util.fail;
 
-public class AddPurchaseGUI implements ActionListener {
+public class AddPurchaseGUI {
     private BudgetManager bm;
     private JList list;
     private JPanel panel;
@@ -79,20 +79,6 @@ public class AddPurchaseGUI implements ActionListener {
         fields.add(type);
         fields.add(price);
     }
-
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-//        if (result == JOptionPane.YES_OPTION) {
-//            Purchase purchase = new Purchase(date.getText(),
-//                    type.getText(), nameofpurchase.getText(), priceInt);
-//            Budget budget = bm.viewBudgetsByName(value);
-//            budget.addPurchase(purchase);
-//            System.out.println(budget.getListOfPurchases());
-//            clearFields();
-//        }
-    }
-
 
 
     // MODIFIES: fields

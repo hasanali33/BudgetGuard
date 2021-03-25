@@ -31,15 +31,8 @@ public class BudgetDemo extends JFrame implements ListSelectionListener, ActionL
     private BudgetManager budgetManager;
     private static final String JSON_STORE = "./data/budgets.json";
 
-    // use a table to show purchases JTable
-    // covert purchases into a bunch of strings
-    // one panel , lists all budgets -- select one budgets and do mulitple actions --
-                  // add  purchase and show all purchases (bottom right, press add purchase, show details)
 
-    //             add budget
-
-    // implement three screens
-
+    // EFFECTS: creates a budgetdemo with a budgetmanager intialized inside
     public BudgetDemo() {
         budgetManager = new BudgetManager();
         prepareGUI();
@@ -48,6 +41,7 @@ public class BudgetDemo extends JFrame implements ListSelectionListener, ActionL
 
 
 
+    // EFFECTS: prepares the GUI by setting up the frame, panel, and buttons
     public void prepareGUI() {
         frame = new JFrame();    // sets up the frame window
         panel = new JPanel();    // sets up the panel to store a group of components to store buttons, etc
@@ -75,6 +69,8 @@ public class BudgetDemo extends JFrame implements ListSelectionListener, ActionL
 
     }
 
+    // EFFECTS: prepares buttons by adding actionlisteners to each of them and passing in each of
+    //          their constuctors into each of them
     public void prepareButtons() {
         // should i put this in own method?
         //addBudget.doClick();

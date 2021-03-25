@@ -17,11 +17,14 @@ public class AddBudgetGUI implements ActionListener {
     private BudgetManager bm;
 
 
+    // EFFECTS: constructs an AddBudgetGuI with a budgetmanager
     public AddBudgetGUI(BudgetManager bm) {
         parent = new JFrame();
         this.bm = bm;
     }
 
+    // EFFECTS: popup window is shown with textfields for a purchase, once user
+    //          presses "Yes" to add, then it is added to specified budget
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("button is clicked");
