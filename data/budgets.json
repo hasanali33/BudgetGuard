@@ -145,5 +145,52 @@
             }
         ],
         "name": "japan"
+    },
+    {
+        "purchases": [
+            {
+                "date": "august 10",
+                "price": 10,
+                "name": "pasta",
+                "type": "food"
+            },
+            {
+                "date": "march 3",
+                "price": 90,
+                "name": "travel",
+                "type": "other"
+            },
+            {
+                "date": "june 1",
+                "price": 111,
+                "name": "tacos",
+                "type": "food"
+            },
+            {
+                "date": "august 1",
+                "price": 22222,
+                "name": "plane",
+                "type": "other"
+            }
+        ],
+        "name": "Rome"
+    },
+    {
+        "purchases": [{
+            "date": "june 5",
+            "price": 3333,
+            "name": "flight",
+            "type": "other"
+        }],
+        "name": "toronto"
+    },
+    {
+        "purchases": [{
+            "date": "November 1",
+            "price": 0,
+            "name": "smoothie",
+            "type": "food"
+        }],
+        "name": "Beijing"
     }
 ]}

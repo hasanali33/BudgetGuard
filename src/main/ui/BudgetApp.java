@@ -2,6 +2,7 @@ package ui;
 
 import model.Budget;
 import model.BudgetManager;
+import model.PriceIsNegative;
 import model.Purchase;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -265,23 +266,32 @@ public class BudgetApp {
     private void addPurchase(Budget p) {
         String userInputAnotherItem = "";
 
-        System.out.println("Please enter the date you made the purchase (ex: July 11)");
+        //System.out.println("Please enter the date you made the purchase (ex: July 11)");
         String date = input.nextLine();
-        System.out.println("Please enter the type of purchase you made (ex: Food)");
+       // System.out.println("Please enter the type of purchase you made (ex: Food)");
         String type = input.nextLine();
-        System.out.println("Please enter the name of purchase you made (ex: Taco Bell)");
+        //System.out.println("Please enter the name of purchase you made (ex: Taco Bell)");
         String name = input.nextLine();
-        System.out.println("Please enter the cost of purchase you made (ex: if $3, then enter 3)");
+        //System.out.println("Please enter the cost of purchase you made (ex: if $3, then enter 3)");
         int price = input.nextInt();
         input.nextLine();
 
-        Purchase purchase = new Purchase(date, type, name, price);
+        Purchase purchase = null;
+        try {
+            purchase = new Purchase(date, type, name, price);
+        } catch (PriceIsNegative e) {
+            try {
+                purchase = new Purchase(date, type, name, 0);
+            } catch (PriceIsNegative priceIsNegative) {
+                priceIsNegative.printStackTrace();
+            }
+        }
 
         p.addPurchase(purchase);
 
-        System.out.println("Purchase has been successfully added!");
+        //System.out.println("Purchase has been successfully added!");
 
-        System.out.println("Would you like to add another item?");
+        ///System.out.println("Would you like to add another item?");
         System.out.println("y for yes");
         System.out.println("n for no, return back to main menu");
 

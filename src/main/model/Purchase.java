@@ -12,10 +12,13 @@ public class Purchase implements Writable {
 
 
     // EFFECTS: creates a purchase object with the date, type, name and price
-    public Purchase(String date, String type, String name, int price) {
+    public Purchase(String date, String type, String name, int price) throws PriceIsNegative {
         this.name = name;
         this.type = type;
         this.date = date;
+        if (price < 0) {
+            throw new PriceIsNegative();
+        }
         this.price = price;
 
     }

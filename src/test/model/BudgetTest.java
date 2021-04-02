@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class BudgetTest {
 
@@ -26,7 +27,12 @@ public class BudgetTest {
 
     @Test
     public void testAddPurchase() {
-        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        Purchase testPurchase = null;
+        try {
+            testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
 
         testBudget.addPurchase(testPurchase);
         assertEquals(1, testBudget.getListOfPurchases().size());
@@ -38,13 +44,23 @@ public class BudgetTest {
 
     @Test
     public void testAddMulitiplePurchases() {
-        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        Purchase testPurchase = null;
+        try {
+            testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
 
         testBudget.addPurchase(testPurchase);
         assertEquals(1, testBudget.getListOfPurchases().size());
         assertEquals("July 11: (Food) Taco Bell $3", testBudget.getListOfPurchases().get(testBudget.getListOfPurchases().size() - 1).toString());
 
-        Purchase testPurchaseTwo = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+        Purchase testPurchaseTwo = null;
+        try {
+            testPurchaseTwo = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
 
         testBudget.addPurchase(testPurchaseTwo);
         assertEquals(2, testBudget.getListOfPurchases().size());
@@ -55,9 +71,24 @@ public class BudgetTest {
 
     @Test
     public void testViewPurchasesByDate() {
-        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
-        Purchase testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
-        Purchase testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+        Purchase testPurchase = null;
+        try {
+            testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseTwo = null;
+        try {
+            testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseThree = null;
+        try {
+            testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
 
         testBudget.addPurchase(testPurchase); // 0
         testBudget.addPurchase(testPurchaseTwo); // 1
@@ -75,10 +106,30 @@ public class BudgetTest {
 
     @Test
     public void testViewPurchasesByType() {
-        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
-        Purchase testPurchaseTwo = new Purchase("July 12", "Rent", "Apartment Rent", 500);
-        Purchase testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
-        Purchase testPurchaseFour = new Purchase("July 16", "Food", "Culvers", 30);
+        Purchase testPurchase = null;
+        try {
+            testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseTwo = null;
+        try {
+            testPurchaseTwo = new Purchase("July 12", "Rent", "Apartment Rent", 500);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseThree = null;
+        try {
+            testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseFour = null;
+        try {
+            testPurchaseFour = new Purchase("July 16", "Food", "Culvers", 30);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
 
         testBudget.addPurchase(testPurchase); // 0
         testBudget.addPurchase(testPurchaseTwo); // 1
@@ -95,7 +146,12 @@ public class BudgetTest {
 
     @Test
     public void testDeletePurchase() {
-        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        Purchase testPurchase = null;
+        try {
+            testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
         testBudget.addPurchase(testPurchase);
 
         assertEquals(1, testBudget.getListOfPurchases().size());
@@ -110,10 +166,30 @@ public class BudgetTest {
 
     @Test
     public void testDeleteMultiplePurchases() {
-        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
-        Purchase testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
-        Purchase testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
-        Purchase testPurchaseFour = new Purchase("July 20", "Travel", "Food Ticket", 20);
+        Purchase testPurchase = null;
+        try {
+            testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseTwo = null;
+        try {
+            testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseThree = null;
+        try {
+            testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseFour = null;
+        try {
+            testPurchaseFour = new Purchase("July 20", "Travel", "Food Ticket", 20);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
 
         testBudget.addPurchase(testPurchase); // 0
         testBudget.addPurchase(testPurchaseTwo); // 1
@@ -141,10 +217,30 @@ public class BudgetTest {
 
     @Test
     public void testGetListOfDates() {
-        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
-        Purchase testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
-        Purchase testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
-        Purchase testPurchaseFour = new Purchase("July 20", "Travel", "Food Ticket", 20);
+        Purchase testPurchase = null;
+        try {
+            testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseTwo = null;
+        try {
+            testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseThree = null;
+        try {
+            testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseFour = null;
+        try {
+            testPurchaseFour = new Purchase("July 20", "Travel", "Food Ticket", 20);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
 
 
         testBudget.addPurchase(testPurchase);
@@ -164,10 +260,30 @@ public class BudgetTest {
 
     @Test
     public void testGetListOfTypes() {
-        Purchase testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
-        Purchase testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
-        Purchase testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
-        Purchase testPurchaseFour = new Purchase("July 20", "Travel", "Food Ticket", 20);
+        Purchase testPurchase = null;
+        try {
+            testPurchase = new Purchase("July 11", "Food", "Taco Bell", 3);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseTwo = null;
+        try {
+            testPurchaseTwo = new Purchase("July 11", "Rent", "Apartment Rent", 500);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseThree = null;
+        try {
+            testPurchaseThree = new Purchase("July 15", "Travel", "Airplane Ticket", 350);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
+        Purchase testPurchaseFour = null;
+        try {
+            testPurchaseFour = new Purchase("July 20", "Travel", "Food Ticket", 20);
+        } catch (PriceIsNegative e) {
+            fail("failed");
+        }
 
 
         testBudget.addPurchase(testPurchase);

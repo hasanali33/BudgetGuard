@@ -2,13 +2,12 @@ package ui;
 
 import model.Budget;
 import model.BudgetManager;
+import model.PriceIsNegative;
 import model.Purchase;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -23,11 +22,11 @@ public class AddBudgetGUI implements ActionListener {
         this.bm = bm;
     }
 
+
     // EFFECTS: popup window is shown with textfields for a purchase, once user
     //          presses "Yes" to add, then it is added to specified budget
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("button is clicked");
         JTextField name = new JTextField();
         JTextField date = new JTextField();
         JTextField type = new JTextField();
@@ -50,7 +49,16 @@ public class AddBudgetGUI implements ActionListener {
         if (result == JOptionPane.YES_OPTION) {
             Budget budget = new Budget(nameParsed);
 
-            Purchase purchase = new Purchase(date.getText(), type.getText(), nameofpurchase.getText(), priceInt);
+            Purchase purchase = null;
+            try {
+                purchase = new Purchase(date.getText(), type.getText(), nameofpurchase.getText(), priceInt);
+            } catch (PriceIsNegative priceIsNegative) {
+                try {
+                    purchase = new Purchase(date.getText(), type.getText(), nameofpurchase.getText(), 0);
+                } catch (PriceIsNegative isNotIntException) {
+                    isNotIntException.printStackTrace();
+                }
+            }
 
             budget.getListOfPurchases().add(purchase);
             bm.getListOfBudgets().add(budget);

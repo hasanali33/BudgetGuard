@@ -2,6 +2,7 @@ package persistence;
 
 import model.Budget;
 import model.BudgetManager;
+import model.PriceIsNegative;
 import model.Purchase;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -9,7 +10,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
@@ -85,7 +85,16 @@ public class JsonReader {
             String date = purchase.getString("date");
             int price = purchase.getInt("price");
 
-            Purchase newPurchase = new Purchase(date, type, nameOfPurchase, price);
+            Purchase newPurchase = null;
+            try {
+                newPurchase = new Purchase(date, type, nameOfPurchase, price);
+            } catch (PriceIsNegative e) {
+                try {
+                    newPurchase = new Purchase(date, type, nameOfPurchase, 0);
+                } catch (PriceIsNegative priceIsNegative) {
+                    // not expected
+                }
+            }
             budget.addPurchase(newPurchase);
         }
         // inside of for loop going thru purchases

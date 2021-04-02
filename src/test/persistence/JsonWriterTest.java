@@ -2,6 +2,7 @@ package persistence;
 
 import model.Budget;
 import model.BudgetManager;
+import model.PriceIsNegative;
 import model.Purchase;
 import org.junit.jupiter.api.Test;
 
@@ -52,14 +53,22 @@ public class JsonWriterTest extends JsonTest {
             Budget budget1 = new Budget("Budget1");
             Budget budget2 = new Budget("budget2");
 
-            budget1.addPurchase(new Purchase("july 11", "food", "purchase1", 40));
-            budget1.addPurchase(new Purchase("july 5", "travel", "purchase2", 12));
+            try {
+                budget1.addPurchase(new Purchase("july 11", "food", "purchase1", 40));
+                budget1.addPurchase(new Purchase("july 5", "travel", "purchase2", 12));
+            } catch (PriceIsNegative e) {
+                e.printStackTrace();
+            }
 
             bm.getListOfBudgets().add(budget1);
 
             bm.getListOfBudgets().add(budget2);
 
-            budget2.addPurchase(new Purchase("july 13", "food", "purchase1", 40));
+            try {
+                budget2.addPurchase(new Purchase("july 13", "food", "purchase1", 40));
+            } catch (PriceIsNegative e) {
+
+            }
 
             JsonWriter writer = new JsonWriter("./data/testWriterBudgetManagerFull.json");
             writer.open();

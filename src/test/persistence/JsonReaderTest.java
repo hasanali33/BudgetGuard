@@ -2,8 +2,8 @@ package persistence;
 
 import model.Budget;
 import model.BudgetManager;
+import model.PriceIsNegative;
 import model.Purchase;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -74,11 +74,20 @@ public class JsonReaderTest extends JsonTest {
             bm2.getListOfBudgets().add(budget2);
             bm2.getListOfBudgets().add(budget3);
 
-            Purchase p1 = new Purchase("july 11", "food", "purchase1", 40);
-            Purchase p2 = new Purchase("july 5", "travel", "purchase2", 12);
-            Purchase p3 = new Purchase("july 13", "food", "purchase9", 40);
-            Purchase p4 = new Purchase("july 11", "food", "purchase8", 20);
-            Purchase p5 = new Purchase("july 23", "school", "purchase4", 900);
+            Purchase p1 = null;
+            Purchase p2 = null;
+            Purchase p3 = null;
+            Purchase p4 = null;
+            Purchase p5 = null;
+            try {
+                p1 = new Purchase("july 11", "food", "purchase1", 40);
+                p2 = new Purchase("july 5", "travel", "purchase2", 12);
+                p3 = new Purchase("july 13", "food", "purchase9", 40);
+                p4 = new Purchase("july 11", "food", "purchase8", 20);
+                p5 = new Purchase("july 23", "school", "purchase4", 900);
+            } catch (PriceIsNegative e) {
+                e.printStackTrace();
+            }
 
             budget1.addPurchase(p1);
             budget1.addPurchase(p2);

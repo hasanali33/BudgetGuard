@@ -2,11 +2,10 @@ package ui;
 
 import model.Budget;
 import model.BudgetManager;
+import model.PriceIsNegative;
 import model.Purchase;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -92,16 +91,24 @@ public class AddPurchaseGUI {
     // EFFECTS: when yes is clicked, a purchase is made and added to the budget, as well as a sound goes off
     public void addPurchaseToBudgetWhenYesIsClicked() {
         if (result == JOptionPane.YES_OPTION) {
-            Purchase purchase = new Purchase(date.getText(),
-                    type.getText(), nameofpurchase.getText(), priceInt);
+            Purchase purchase = null;
+            try {
+                purchase = new Purchase(date.getText(), type.getText(), nameofpurchase.getText(), priceInt);
+            } catch (PriceIsNegative e) {
+                try {
+                    purchase = new Purchase(date.getText(), type.getText(), nameofpurchase.getText(), 0);
+                } catch (PriceIsNegative priceIsNegative) {
+                    // not expected
+                }
+            }
             Budget budget = bm.viewBudgetsByName(value);
             budget.addPurchase(purchase);
-            System.out.println(budget.getListOfPurchases());
+            //System.out.println(budget.getListOfPurchases());
             URL soundbyte = null;
             try {
                 soundbyte = new File("data/sound.wav").toURI().toURL();
             } catch (MalformedURLException e) {
-                System.out.println("does not work");
+                //
             }
             java.applet.AudioClip clip = java.applet.Applet.newAudioClip(soundbyte);
             clip.play();
