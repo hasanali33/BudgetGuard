@@ -24,9 +24,7 @@ public class ShowDetailsUI {
     private JTable table;
     private String value;
     private DefaultTableModel tableModel;
-    private JButton backButton;
     private String[] columns;
-    private MouseListener mouse;
 
     // EFFECTS: constructs a ShowDetailsUI with a budgetmanager, a JList, 2 JPanels, 2 JFrames, and a string
     public ShowDetailsUI(BudgetManager bm, JList list, JPanel panel, JPanel panel2,

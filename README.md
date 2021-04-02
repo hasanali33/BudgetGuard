@@ -24,6 +24,7 @@ In the context of a budget application:
 - As a user, I want to be able to add to a budget
 - As a user, I want to be able to show all purchases in a budget
 - As a user, I want to be able to see total money spent in a budget
+- As a user, I want to be able to add a purchase to a certain budget
 - As a user, I want to be able to save my budgets to file
 - As a user, I want to be able to load my budgets from file
 
@@ -36,4 +37,15 @@ Future additions:
 - As a user, I want to be able to view purchases by type in a budget
 - As a user, I want to be able to delete a budget
 - As a user, I want to be able to show all purchases of all budgets combined
-- As a user, I want to be able to add a purchase to a certain budget
+
+Phase 4: Task 3:
+
+Based on the design presented in my UML class diagram, I can see there is a lot of coupling within one class. If I were
+to make some changes to improve my design, I would not make all my UI classes dependent on BudgetManager. I feel there
+is too much dependency on one class, so I would think about breaking it up possibly, so it is not as coupled. 
+Another improvement I would want to do is to refactor the application to use a map data structure, and 
+eliminate the budget class all together. I feel this would be a cleaner approach to my budget application since my keys
+would be the name of budget and the value would be a list of purchases unique to that key, instead of a budget 
+just having a list of purchases. 
+ 
+ 

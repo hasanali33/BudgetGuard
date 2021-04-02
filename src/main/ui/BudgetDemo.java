@@ -20,14 +20,10 @@ import java.util.List;
 public class BudgetDemo extends JFrame implements ListSelectionListener, ActionListener {
     private JFrame frame;
     private JPanel panel;
-    private JList<Budget> list;
     private JButton addBudget;
     private JButton saveBudget;
     private JButton loadBudget;
     private JButton viewBudgets;
-    private JButton addPurchase;
-    private JButton showDetails;
-    private JButton backButton;
     private BudgetManager budgetManager;
     private static final String JSON_STORE = "./data/budgets.json";
 
