@@ -171,6 +171,12 @@
                 "price": 22222,
                 "name": "plane",
                 "type": "other"
+            },
+            {
+                "date": "June 1",
+                "price": 90,
+                "name": "water bottles",
+                "type": "food"
             }
         ],
         "name": "Rome"
@@ -192,5 +198,22 @@
             "type": "food"
         }],
         "name": "Beijing"
+    },
+    {
+        "purchases": [
+            {
+                "date": "July 2",
+                "price": 430,
+                "name": "plane ticket",
+                "type": "travel"
+            },
+            {
+                "date": "august 6",
+                "price": 48,
+                "name": "tacos",
+                "type": "food"
+            }
+        ],
+        "name": "Scotland"
     }
 ]}

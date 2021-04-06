@@ -14,6 +14,13 @@ import javax.swing.JOptionPane;
 public class AddBudgetGUI implements ActionListener {
     private JFrame parent;
     private BudgetManager bm;
+    private JTextField name;
+    private JTextField date;
+    private JTextField type;
+    private JTextField nameofpurchase;
+    private JTextField price;
+    private Object[] message;
+
 
 
     // EFFECTS: constructs an AddBudgetGuI with a budgetmanager
@@ -22,24 +29,38 @@ public class AddBudgetGUI implements ActionListener {
         this.bm = bm;
     }
 
-
-    // EFFECTS: popup window is shown with textfields for a purchase, once user
-    //          presses "Yes" to add, then it is added to specified budget
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        JTextField name = new JTextField();
-        JTextField date = new JTextField();
-        JTextField type = new JTextField();
-        JTextField nameofpurchase = new JTextField();
-        JTextField price = new JTextField();
-
-        Object[] message = {
-                "Name of Budget",  name,
+    // EFFECTS: intializes all the JTextFields
+    public void initializeJTextFields() {
+        name = new JTextField();
+        date = new JTextField();
+        type = new JTextField();
+        nameofpurchase = new JTextField();
+        price = new JTextField();
+        message = new Object[]{
+                "Name of Budget", name,
                 "Date of purchase", date,
                 "Type of purchase", type,
                 "Name of purchase", nameofpurchase,
                 "Price of purchase", price
         };
+
+
+    }
+
+
+    // EFFECTS: popup window is shown with textfields for a purchase, once user
+    //          presses "Yes" to add, then it is added to specified budget
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        initializeJTextFields();
+
+//        Object[] message = {
+//                "Name of Budget",  name,
+//                "Date of purchase", date,
+//                "Type of purchase", type,
+//                "Name of purchase", nameofpurchase,
+//                "Price of purchase", price
+//        };
 
         int result = JOptionPane.showConfirmDialog(parent, message);
         String nameParsed = name.getText();
