@@ -86,12 +86,16 @@ public class JsonReaderTest extends JsonTest {
             try {
                 p1 = new Purchase("july 11", "food", "purchase1", 40);
                 p2 = new Purchase("july 5", "travel", "purchase2", 12);
-                p6 = new Purchase("august 1", "school", "purchase3", 0);
                 p3 = new Purchase("july 13", "food", "purchase9", 40);
                 p4 = new Purchase("july 11", "food", "purchase8", 20);
                 p5 = new Purchase("july 23", "school", "purchase4", 900);
+                p6 = new Purchase("august 1", "school", "purchase3", -900);
             } catch (PriceIsNegative e) {
-                e.printStackTrace();
+                try {
+                    p6 = new Purchase("august 1", "school", "purchase3", 0);
+                } catch (PriceIsNegative priceIsNegative) {
+                    // not expected
+                }
             }
 
             budget1.addPurchase(p1);
