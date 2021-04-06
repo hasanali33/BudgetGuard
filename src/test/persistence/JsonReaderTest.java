@@ -43,9 +43,10 @@ public class JsonReaderTest extends JsonTest {
             BudgetManager bm = reader.read();
             assertEquals("Budget1", bm.getListOfBudgets().get(0).getName());
             List<Purchase> purchases = bm.getListOfBudgets().get(0).getListOfPurchases();
-            assertEquals(2, purchases.size());
+            assertEquals(3, purchases.size());
             checkPurchase("purchase1", "food", "july 11", 40, purchases.get(0));
             checkPurchase("purchase2", "travel", "july 5", 12, purchases.get(1));
+            checkPurchase("purchase3", "school", "august 1", 0, purchases.get(2));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -58,9 +59,11 @@ public class JsonReaderTest extends JsonTest {
             BudgetManager bm = reader.read();
             assertEquals("Budget1", bm.getListOfBudgets().get(0).getName());
             List<Purchase> purchases = bm.getListOfBudgets().get(0).getListOfPurchases();
-            assertEquals(2, purchases.size());
+            assertEquals(3, purchases.size());
             checkPurchase("purchase1", "food", "july 11", 40, purchases.get(0));
             checkPurchase("purchase2", "travel", "july 5", 12, purchases.get(1));
+            checkPurchase("purchase3", "school", "august 1", 0, purchases.get(2));
+
 
 
             // compare both budgetmanagers to see if budgetstojson and purchasestojson works
@@ -79,9 +82,11 @@ public class JsonReaderTest extends JsonTest {
             Purchase p3 = null;
             Purchase p4 = null;
             Purchase p5 = null;
+            Purchase p6 = null;
             try {
                 p1 = new Purchase("july 11", "food", "purchase1", 40);
                 p2 = new Purchase("july 5", "travel", "purchase2", 12);
+                p6 = new Purchase("august 1", "school", "purchase3", 0);
                 p3 = new Purchase("july 13", "food", "purchase9", 40);
                 p4 = new Purchase("july 11", "food", "purchase8", 20);
                 p5 = new Purchase("july 23", "school", "purchase4", 900);
@@ -91,6 +96,7 @@ public class JsonReaderTest extends JsonTest {
 
             budget1.addPurchase(p1);
             budget1.addPurchase(p2);
+            budget1.addPurchase(p6);
             budget2.addPurchase(p3);
             budget3.addPurchase(p5);
             budget3.addPurchase(p4);

@@ -56,8 +56,13 @@ public class JsonWriterTest extends JsonTest {
             try {
                 budget1.addPurchase(new Purchase("july 11", "food", "purchase1", 40));
                 budget1.addPurchase(new Purchase("july 5", "travel", "purchase2", 12));
+                budget1.addPurchase(new Purchase("august 1", "school", "purchase3", -100));
             } catch (PriceIsNegative e) {
-                e.printStackTrace();
+                try {
+                    budget1.addPurchase(new Purchase("august 1", "school", "purchase3", 0));
+                } catch (PriceIsNegative priceIsNegative) {
+                    // nothing expected
+                }
             }
 
             bm.getListOfBudgets().add(budget1);
@@ -83,6 +88,8 @@ public class JsonWriterTest extends JsonTest {
                     bm.getListOfBudgets().get(0).getListOfPurchases().get(0));
             checkPurchase("purchase2", "travel", "july 5", 12,
                     bm.getListOfBudgets().get(0).getListOfPurchases().get(1));
+            checkPurchase("purchase3", "school", "august 1", 0,
+                    bm.getListOfBudgets().get(0).getListOfPurchases().get(2));
             assertEquals("budget2", bm.getListOfBudgets().get(1).getName());
             checkPurchase("purchase1", "food", "july 13", 40,
                     bm.getListOfBudgets().get(1).getListOfPurchases().get(0));

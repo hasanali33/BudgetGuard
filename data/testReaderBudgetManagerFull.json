@@ -14,6 +14,12 @@
           "type": "travel",
           "name": "purchase2",
           "price": 12
+        },
+        {
+          "date": "august 1",
+          "type": "school",
+          "name": "purchase3",
+          "price": 0
         }
       ]
     },
