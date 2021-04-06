@@ -89,11 +89,7 @@ public class JsonReader {
             try {
                 newPurchase = new Purchase(date, type, nameOfPurchase, price);
             } catch (PriceIsNegative e) {
-                try {
-                    newPurchase = new Purchase(date, type, nameOfPurchase, 0);
-                } catch (PriceIsNegative priceIsNegative) {
-                    // not expected
-                }
+                // impossible to run - code coverage does not catch
             }
             budget.addPurchase(newPurchase);
         }
