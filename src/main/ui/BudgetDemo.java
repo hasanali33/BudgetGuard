@@ -46,7 +46,7 @@ public class BudgetDemo extends JFrame implements ListSelectionListener, ActionL
         frame.setLayout(new BorderLayout());         // helpful for down the road?
         frame.add(panel, BorderLayout.CENTER);  //  adds the panel into the window frame and give its
         // a proper layout
-        frame.setTitle("Budget Manager");           // sets the title for the frame
+        frame.setTitle("Budget Guard");           // sets the title for the frame
         addBudget = new JButton("Add Budget");
         panel.add(addBudget);    // adds button to JPanel
 
